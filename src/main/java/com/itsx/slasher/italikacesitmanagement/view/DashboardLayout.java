@@ -75,7 +75,7 @@ public class DashboardLayout extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         lastNameClientField = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        motherLastNameField = new javax.swing.JTextField();
+        motherLastNameClientField = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         cellphoneClientField = new javax.swing.JTextField();
         agregarClienteButton = new javax.swing.JToggleButton();
@@ -338,9 +338,9 @@ public class DashboardLayout extends javax.swing.JFrame {
                         .addComponent(jLabel26)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(issuesWorkValidation)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(agregarServicioButton)
-                .addContainerGap())
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         paneDashboard.addTab("Nuevo servicio", formWork);
@@ -355,9 +355,9 @@ public class DashboardLayout extends javax.swing.JFrame {
 
         jLabel16.setText("Apellido materno");
 
-        motherLastNameField.addActionListener(new java.awt.event.ActionListener() {
+        motherLastNameClientField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                motherLastNameFieldActionPerformed(evt);
+                motherLastNameClientFieldActionPerformed(evt);
             }
         });
 
@@ -389,7 +389,7 @@ public class DashboardLayout extends javax.swing.JFrame {
                                 .addComponent(folioClientField)
                                 .addComponent(nameClientField, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
                                 .addComponent(lastNameClientField)
-                                .addComponent(motherLastNameField)
+                                .addComponent(motherLastNameClientField)
                                 .addComponent(cellphoneClientField))
                             .addComponent(nameClientValidation)
                             .addComponent(lastNameClientValidation)
@@ -421,7 +421,7 @@ public class DashboardLayout extends javax.swing.JFrame {
                 .addGap(9, 9, 9)
                 .addGroup(formClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(motherLastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(motherLastNameClientField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(motherLastNameClientValidation)
                 .addGap(9, 9, 9)
@@ -543,8 +543,6 @@ public class DashboardLayout extends javax.swing.JFrame {
         paneDashboard.addTab("Agregar mecanico", formMechanic);
 
         jLabel3.setText("Placa");
-
-        plaqueVehicleField.setEnabled(false);
 
         jLabel4.setText("Marca");
 
@@ -747,9 +745,9 @@ public class DashboardLayout extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nameMechanicFieldActionPerformed
 
-    private void motherLastNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_motherLastNameFieldActionPerformed
+    private void motherLastNameClientFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_motherLastNameClientFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_motherLastNameFieldActionPerformed
+    }//GEN-LAST:event_motherLastNameClientFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -766,7 +764,7 @@ public class DashboardLayout extends javax.swing.JFrame {
     public javax.swing.JLabel cellphoneMechanicValidation;
     public javax.swing.JComboBox<Long> clientCBox;
     public javax.swing.JButton clientLayoutButton;
-    private javax.swing.JLabel clientWorkValidation;
+    public javax.swing.JLabel clientWorkValidation;
     public com.toedter.calendar.JDateChooser dateReceive;
     public javax.swing.JLabel dateReceiveWorkValidation;
     public com.toedter.calendar.JDateChooser dateSend;
@@ -824,8 +822,8 @@ public class DashboardLayout extends javax.swing.JFrame {
     public javax.swing.JButton mechanicsLayoutButton;
     public javax.swing.JTextField modelVehicleField;
     public javax.swing.JLabel modelVehicleValidation;
+    public javax.swing.JTextField motherLastNameClientField;
     public javax.swing.JLabel motherLastNameClientValidation;
-    public javax.swing.JTextField motherLastNameField;
     public javax.swing.JTextField motherLastNameMechanicField;
     public javax.swing.JLabel motherLastNameMechanicValidation;
     public javax.swing.JTextField nameClientField;

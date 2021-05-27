@@ -321,9 +321,9 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="issuesWorkValidation" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="14" max="32767" attributes="0"/>
-                          <Component id="agregarServicioButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
+                          <Component id="agregarServicioButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="19" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -498,6 +498,9 @@
                   </SubComponents>
                 </Container>
                 <Component class="javax.swing.JLabel" name="clientWorkValidation">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="issuesWorkValidation">
                   <AuxValues>
@@ -553,7 +556,7 @@
                                           <Component id="folioClientField" max="32767" attributes="0"/>
                                           <Component id="nameClientField" pref="202" max="32767" attributes="0"/>
                                           <Component id="lastNameClientField" max="32767" attributes="0"/>
-                                          <Component id="motherLastNameField" max="32767" attributes="0"/>
+                                          <Component id="motherLastNameClientField" max="32767" attributes="0"/>
                                           <Component id="cellphoneClientField" max="32767" attributes="0"/>
                                       </Group>
                                       <Component id="nameClientValidation" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -594,7 +597,7 @@
                           <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="motherLastNameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="motherLastNameClientField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="motherLastNameClientValidation" min="-2" max="-2" attributes="0"/>
@@ -651,9 +654,9 @@
                     <Property name="text" type="java.lang.String" value="Apellido materno"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="motherLastNameField">
+                <Component class="javax.swing.JTextField" name="motherLastNameClientField">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="motherLastNameFieldActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="motherLastNameClientFieldActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -1021,9 +1024,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="plaqueVehicleField">
-                  <Properties>
-                    <Property name="enabled" type="boolean" value="false"/>
-                  </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>

@@ -6,10 +6,8 @@
 package com.itsx.slasher.italikacesitmanagement.validations;
 
 import com.toedter.calendar.JDateChooser;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JTextPane;
+
+import javax.swing.*;
 
 /**
  *
@@ -23,5 +21,5 @@ public interface WorkValidations {
     boolean validateDateReceiveWork(JDateChooser dateReceive, JLabel dateReceiveWorkValidation);
     boolean validateDateSendWork(JDateChooser dateSend, JLabel dateSendWorkValidation);
     boolean validateClientWork(JComboBox clientCBox, JLabel clientWorkValidation);
-    boolean validateIssuesWork(JTextPane issuesTPane, JLabel issuesWorkValidation);
+    boolean validateIssuesWork(JTextArea issuesTPane, JLabel issuesWorkValidation);
 }

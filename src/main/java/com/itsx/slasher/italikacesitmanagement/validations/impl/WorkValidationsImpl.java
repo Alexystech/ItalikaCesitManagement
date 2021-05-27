@@ -7,10 +7,8 @@ package com.itsx.slasher.italikacesitmanagement.validations.impl;
 
 import com.itsx.slasher.italikacesitmanagement.validations.WorkValidations;
 import com.toedter.calendar.JDateChooser;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JTextPane;
+
+import javax.swing.*;
 
 /**
  *
@@ -101,7 +99,7 @@ public class WorkValidationsImpl implements WorkValidations {
     }
 
     @Override
-    public boolean validateIssuesWork(JTextPane issuesTPane, JLabel issuesWorkValidation) {
+    public boolean validateIssuesWork(JTextArea issuesTPane, JLabel issuesWorkValidation) {
         if ( issuesTPane.getText().isEmpty() ) {
             issuesWorkValidation.setText("Debe agregar las fallas del vehiculo");
             return false;

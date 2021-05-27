@@ -25,11 +25,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.util.Arrays;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -89,7 +84,8 @@ public class LoginController implements ActionListener {
                         "Alerta", JOptionPane.WARNING_MESSAGE);
                 
             } else {
-                
+
+                loginLayout.setVisible(false);
                 DashboardLayout dashboard = new DashboardLayout();
                 
                 ClientService clientService = new ClientServiceImpl();
@@ -104,6 +100,7 @@ public class LoginController implements ActionListener {
                 );
                 
                 dashboardController.start();
+                dashboardController.runValidations();
                 
             }
             
