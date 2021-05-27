@@ -27,7 +27,8 @@ import java.util.List;
 public class AdministratorServiceImpl implements AdministratorService {
     
     private final HttpClient httpClient = HttpClient.newBuilder()
-            .version(HttpClient.Version.HTTP_2).build();
+            .version(HttpClient.Version.HTTP_2)
+            .build();
     
     private final ObjectMapper mapper = new ObjectMapper();
     

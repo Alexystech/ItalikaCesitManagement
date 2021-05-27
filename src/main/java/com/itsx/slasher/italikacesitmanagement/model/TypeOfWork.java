@@ -16,6 +16,11 @@ public class TypeOfWork implements Serializable {
     private Long folio;
     private String nameOfWork;
 
+    public TypeOfWork(Long folio, String nameOfWork) {
+        this.folio = folio;
+        this.nameOfWork = nameOfWork;
+    }
+
     public TypeOfWork(String nameOfWork) {
         this.nameOfWork = nameOfWork;
     }

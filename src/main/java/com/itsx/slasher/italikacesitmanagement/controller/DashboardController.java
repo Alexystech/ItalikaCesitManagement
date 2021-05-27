@@ -5,11 +5,13 @@
  */
 package com.itsx.slasher.italikacesitmanagement.controller;
 
+import com.itsx.slasher.italikacesitmanagement.model.TypeOfWork;
 import com.itsx.slasher.italikacesitmanagement.service.ClientService;
 import com.itsx.slasher.italikacesitmanagement.service.MechanicService;
 import com.itsx.slasher.italikacesitmanagement.service.TypeOfWorkService;
 import com.itsx.slasher.italikacesitmanagement.service.VehicleService;
 import com.itsx.slasher.italikacesitmanagement.service.WorkService;
+import com.itsx.slasher.italikacesitmanagement.service.impl.TypeOfWorkServiceImpl;
 import com.itsx.slasher.italikacesitmanagement.validations.ClientValidations;
 import com.itsx.slasher.italikacesitmanagement.validations.MechanicValidations;
 import com.itsx.slasher.italikacesitmanagement.validations.TypeOfWorkValidations;
@@ -25,7 +27,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
-import javax.swing.WindowConstants;
+import javax.swing.*;
 
 /**
  *
@@ -277,6 +279,33 @@ public class DashboardController implements ActionListener {
     public void actionPerformed(ActionEvent arg0) {
 
         if ( arg0.getSource() == dashboardLayout.logoutLayoutButton ) {
+
+        }
+
+        if ( arg0.getSource() == dashboardLayout.agregarTipoDeTrabajoButton ) {
+
+            TypeOfWorkValidations typeOfWorkValidations = new TypeOfWorkValidationsImpl();
+
+            if ( !typeOfWorkValidations.validateNameTypeOfWork(dashboardLayout.nameTWorkField
+                    , dashboardLayout.nameTWorkValidation) ) {
+
+                JOptionPane.showMessageDialog(null, "llene correctamente los campos",
+                        "Atencion", JOptionPane.WARNING_MESSAGE);
+
+            } else {
+
+                String nameTypeOfWork = dashboardLayout.nameTWorkField.getText();
+
+                TypeOfWork typeOfWork = new TypeOfWork(nameTypeOfWork);
+                TypeOfWorkService typeOfWorkService = new TypeOfWorkServiceImpl();
+
+                typeOfWorkService.createTypeOfWork(typeOfWork);
+                typeOfWorkService.getTypeOfWorkByFolio(10);
+
+                JOptionPane.showMessageDialog(null,"Tipo de trabajo generado con éxito!",
+                        "Atencion", JOptionPane.INFORMATION_MESSAGE);
+
+            }
 
         }
 
