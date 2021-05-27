@@ -19,6 +19,14 @@ public class Client implements Serializable {
     private String motherLastName;
     private String cellphone;
 
+    public Client(Long folio, String name, String lastName, String motherLastName, String cellphone) {
+        this.folio = folio;
+        this.name = name;
+        this.lastName = lastName;
+        this.motherLastName = motherLastName;
+        this.cellphone = cellphone;
+    }
+
     public Client(String name, String lastName, String motherLastName, String cellphone) {
         this.name = name;
         this.lastName = lastName;

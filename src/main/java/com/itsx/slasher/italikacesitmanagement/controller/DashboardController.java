@@ -5,6 +5,7 @@
  */
 package com.itsx.slasher.italikacesitmanagement.controller;
 
+import com.itsx.slasher.italikacesitmanagement.model.Client;
 import com.itsx.slasher.italikacesitmanagement.model.Mechanic;
 import com.itsx.slasher.italikacesitmanagement.model.TypeOfWork;
 import com.itsx.slasher.italikacesitmanagement.model.Vehicle;
@@ -379,6 +380,41 @@ public class DashboardController implements ActionListener {
                 dashboardLayout.cellphoneMechanicField.setText("");
 
                 JOptionPane.showMessageDialog(null, "Mecanico generado con éxito!",
+                        "Atencion", JOptionPane.INFORMATION_MESSAGE);
+
+            }
+
+        }
+
+        if ( arg0.getSource() == dashboardLayout.agregarClienteButton ) {
+
+            ClientValidations clientValidations = new ClientValidationsImpl();
+
+            if ( !clientValidations.validateClientName(dashboardLayout.nameClientField, dashboardLayout.nameClientValidation) ||
+                !clientValidations.validateClientLastName(dashboardLayout.lastNameClientField, dashboardLayout.lastNameClientValidation) ||
+                !clientValidations.validateClientMotherLastName(dashboardLayout.motherLastNameClientField, dashboardLayout.motherLastNameClientValidation) ||
+                !clientValidations.validateClientCellphone(dashboardLayout.cellphoneClientField, dashboardLayout.cellphoneClientValidation)) {
+
+                JOptionPane.showMessageDialog(null, "llene correctamente los campos",
+                        "atencion", JOptionPane.WARNING_MESSAGE);
+
+            } else {
+
+                String name = dashboardLayout.nameClientField.getText();
+                String lastName = dashboardLayout.lastNameClientField.getText();
+                String motherLastName = dashboardLayout.motherLastNameClientField.getText();
+                String cellphone = dashboardLayout.cellphoneClientField.getText();
+
+                Client client = new Client(name, lastName, motherLastName, cellphone);
+
+                clientService.createClient(client);
+
+                dashboardLayout.nameClientField.setText("");
+                dashboardLayout.lastNameClientField.setText("");
+                dashboardLayout.motherLastNameClientField.setText("");
+                dashboardLayout.cellphoneClientField.setText("");
+
+                JOptionPane.showMessageDialog(null,"cliente generado con éxito",
                         "Atencion", JOptionPane.INFORMATION_MESSAGE);
 
             }
