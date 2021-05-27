@@ -6,6 +6,7 @@
 package com.itsx.slasher.italikacesitmanagement.controller;
 
 import com.itsx.slasher.italikacesitmanagement.model.TypeOfWork;
+import com.itsx.slasher.italikacesitmanagement.model.Vehicle;
 import com.itsx.slasher.italikacesitmanagement.service.ClientService;
 import com.itsx.slasher.italikacesitmanagement.service.MechanicService;
 import com.itsx.slasher.italikacesitmanagement.service.TypeOfWorkService;
@@ -300,10 +301,46 @@ public class DashboardController implements ActionListener {
                 TypeOfWorkService typeOfWorkService = new TypeOfWorkServiceImpl();
 
                 typeOfWorkService.createTypeOfWork(typeOfWork);
-                typeOfWorkService.getTypeOfWorkByFolio(10);
+
+                dashboardLayout.nameTWorkField.setText("");
 
                 JOptionPane.showMessageDialog(null,"Tipo de trabajo generado con éxito!",
                         "Atencion", JOptionPane.INFORMATION_MESSAGE);
+
+            }
+
+        }
+
+        if ( arg0.getSource() == dashboardLayout.agregarVehiculoButton ) {
+
+            VehicleValidations vehicleValidations = new VehicleValidationsImpl();
+
+            if ( !vehicleValidations.validatePlaqueVehicle(dashboardLayout.plaqueVehicleField, dashboardLayout.plaqueVehicleValidation) ||
+                !vehicleValidations.validateBrandVehicle(dashboardLayout.brandVehicleField, dashboardLayout.brandVehicleValidation)  ||
+                !vehicleValidations.validateModelVehicle(dashboardLayout.modelVehicleField, dashboardLayout.modelVehicleValidation)  ||
+                !vehicleValidations.validateYearVehicle(dashboardLayout.yearVehicleCBox, dashboardLayout.yearVehicleValidation)) {
+
+                JOptionPane.showMessageDialog(null, "llene correctamente los campos"
+                        , "Atencion", JOptionPane.WARNING_MESSAGE);
+
+            } else {
+
+                String plaque = dashboardLayout.plaqueVehicleField.getText();
+                String brand = dashboardLayout.brandVehicleField.getText();
+                String model = dashboardLayout.modelVehicleField.getText();
+                int year = Integer.parseInt(dashboardLayout.yearVehicleCBox.getSelectedItem().toString());
+
+                Vehicle vehicle = new Vehicle(plaque, brand, model, year);
+
+                vehicleService.createVehicle(vehicle);
+
+                dashboardLayout.plaqueVehicleField.setText("");
+                dashboardLayout.brandVehicleField.setText("");
+                dashboardLayout.modelVehicleField.setText("");
+                dashboardLayout.yearVehicleCBox.setSelectedIndex(0);
+
+                JOptionPane.showMessageDialog(null, "Vehiculo generado con éxito!"
+                        , "Atencion", JOptionPane.INFORMATION_MESSAGE);
 
             }
 

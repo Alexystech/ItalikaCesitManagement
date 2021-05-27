@@ -167,7 +167,8 @@ public class TypeOfWorkServiceImpl implements TypeOfWorkService {
                     .send(requestTypeOfWorks, HttpResponse.BodyHandlers.ofString());
 
             typeOfWorks = convertToObject(httpResponse.body(), new TypeReference<List<TypeOfWork>>() {});
-
+            System.out.println(httpResponse.statusCode());
+            System.out.println(httpResponse.body());
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
@@ -184,3 +185,6 @@ public class TypeOfWorkServiceImpl implements TypeOfWorkService {
         return null;
     }
 }
+
+
+

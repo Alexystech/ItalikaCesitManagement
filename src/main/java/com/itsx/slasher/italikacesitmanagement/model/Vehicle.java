@@ -18,6 +18,13 @@ public class Vehicle implements Serializable{
     private String model;
     private Integer year;
 
+    public Vehicle(String plaque, String brand, String model, Integer year) {
+        this.plaque = plaque;
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+    }
+
     public Vehicle(String brand, String model, Integer year) {
         this.brand = brand;
         this.model = model;
