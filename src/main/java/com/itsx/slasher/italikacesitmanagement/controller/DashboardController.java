@@ -5,6 +5,7 @@
  */
 package com.itsx.slasher.italikacesitmanagement.controller;
 
+import com.itsx.slasher.italikacesitmanagement.model.Mechanic;
 import com.itsx.slasher.italikacesitmanagement.model.TypeOfWork;
 import com.itsx.slasher.italikacesitmanagement.model.Vehicle;
 import com.itsx.slasher.italikacesitmanagement.service.ClientService;
@@ -341,6 +342,44 @@ public class DashboardController implements ActionListener {
 
                 JOptionPane.showMessageDialog(null, "Vehiculo generado con éxito!"
                         , "Atencion", JOptionPane.INFORMATION_MESSAGE);
+
+            }
+
+        }
+
+        if ( arg0.getSource() == dashboardLayout.agregarMecanicoButton ) {
+
+            MechanicValidations mechanicValidations = new MechanicValidationsImpl();
+
+            if ( !mechanicValidations.validateMechanicName(dashboardLayout.nameMechanicField, dashboardLayout.nameMechanicValidation) ||
+                !mechanicValidations.validateMechanicLastName(dashboardLayout.lastNameMechanicField, dashboardLayout.lastNameMechanicValidation) ||
+                !mechanicValidations.validateMechanicMotherLastName(dashboardLayout.motherLastNameMechanicField, dashboardLayout.motherLastNameMechanicValidation) ||
+                !mechanicValidations.validateMechanicSpeciality(dashboardLayout.specialityMechanicField, dashboardLayout.specialityMechanicValidation) ||
+                !mechanicValidations.validateMechanicCellphone(dashboardLayout.cellphoneMechanicField, dashboardLayout.cellphoneMechanicValidation)) {
+
+                JOptionPane.showMessageDialog(null, "llene correctamente los campos",
+                        "Atencion", JOptionPane.WARNING_MESSAGE);
+
+            } else {
+
+                String name = dashboardLayout.nameMechanicField.getText();
+                String lastName = dashboardLayout.lastNameMechanicField.getText();
+                String motherLastName = dashboardLayout.motherLastNameMechanicField.getText();
+                String speciality = dashboardLayout.specialityMechanicField.getText();
+                String cellphone = dashboardLayout.cellphoneMechanicField.getText();
+
+                Mechanic mechanic = new Mechanic(name, lastName, motherLastName, speciality, cellphone);
+
+                mechanicService.createMechanic(mechanic);
+
+                dashboardLayout.nameMechanicField.setText("");
+                dashboardLayout.lastNameMechanicField.setText("");
+                dashboardLayout.motherLastNameMechanicField.setText("");
+                dashboardLayout.specialityMechanicField.setText("");
+                dashboardLayout.cellphoneMechanicField.setText("");
+
+                JOptionPane.showMessageDialog(null, "Mecanico generado con éxito!",
+                        "Atencion", JOptionPane.INFORMATION_MESSAGE);
 
             }
 

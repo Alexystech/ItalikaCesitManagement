@@ -123,6 +123,7 @@ public class TypeOfWorkServiceImpl implements TypeOfWorkService {
         TypeOfWork typeOfWork = new TypeOfWork();
 
         if ( folio > 0 ) {
+
             final String URL_GET_TYPE_OF_WORK_BY_FOLIO =
                     "https://italika-apirest.herokuapp.com/api/typeofwork/get/typeofwork/"+folio;
 
@@ -152,6 +153,7 @@ public class TypeOfWorkServiceImpl implements TypeOfWorkService {
 
     @Override
     public List<TypeOfWork> getAllTypeOfWorks() {
+
         final String URL_GET_ALL_TYPE_OF_WORK =
                 "https://italika-apirest.herokuapp.com/api/typeofwork/get/all/typeofworks";
         List<TypeOfWork> typeOfWorks = new LinkedList<>();

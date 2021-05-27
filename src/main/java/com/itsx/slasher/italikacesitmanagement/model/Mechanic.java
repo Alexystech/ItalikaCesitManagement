@@ -19,6 +19,15 @@ public class Mechanic implements Serializable {
     private String speciality;
     private String cellphone;
 
+    public Mechanic(Long folio, String name, String lastName, String motherLastName, String speciality, String cellphone) {
+        this.folio = folio;
+        this.name = name;
+        this.lastName = lastName;
+        this.motherLastName = motherLastName;
+        this.speciality = speciality;
+        this.cellphone = cellphone;
+    }
+
     public Mechanic(String name, String lastName, String motherLastName, String speciality, String cellphone) {
         this.name = name;
         this.lastName = lastName;
