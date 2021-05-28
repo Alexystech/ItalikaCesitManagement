@@ -129,8 +129,8 @@ public class TypeOfWorkServiceImpl implements TypeOfWorkService {
 
             final HttpRequest requestTypeOfWork = HttpRequest.newBuilder()
                     .timeout(Duration.ofMinutes(2))
-                    .GET()
                     .uri(URI.create(URL_GET_TYPE_OF_WORK_BY_FOLIO))
+                    .GET()
                     .build();
 
             try {
@@ -155,7 +155,7 @@ public class TypeOfWorkServiceImpl implements TypeOfWorkService {
     public List<TypeOfWork> getAllTypeOfWorks() {
 
         final String URL_GET_ALL_TYPE_OF_WORK =
-                "https://italika-apirest.herokuapp.com/api/typeofwork/get/all/typeofworks";
+                "https://italika-apirest.herokuapp.com/api/typeofwork/get/all/typeofwork";
         List<TypeOfWork> typeOfWorks = new LinkedList<>();
 
         final HttpRequest requestTypeOfWorks = HttpRequest.newBuilder()

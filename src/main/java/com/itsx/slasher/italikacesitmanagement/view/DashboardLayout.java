@@ -229,9 +229,9 @@ public class DashboardLayout extends javax.swing.JFrame {
         issuesTPane.setRows(5);
         jScrollPane1.setViewportView(issuesTPane);
 
-        dateReceive.setDateFormatString("yyyy/MM/dd HH:mm:ss");
+        dateReceive.setDateFormatString("yyyy/MM/dd HH:mm.ss");
 
-        dateSend.setDateFormatString("yyyy/MM/dd HH:mm:ss");
+        dateSend.setDateFormatString("yyyy/MM/dd HH:mm.ss");
 
         javax.swing.GroupLayout formWorkLayout = new javax.swing.GroupLayout(formWork);
         formWork.setLayout(formWorkLayout);

@@ -20,17 +20,29 @@ public class Work implements Serializable {
     private Vehicle vehicle;
     private Double cost;
     private Date fechaRecibido;
-    private Date fechaEntregado;
+    private Date fechaEntrega;
     private Client client;
     private String issues;
 
-    public Work(TypeOfWork typeOfWork, Mechanic mechanic, Vehicle vehicle, Double cost, Date fechaRecibido, Date fechaEntregado, Client client, String issues) {
+    public Work(Long folio, TypeOfWork typeOfWork, Mechanic mechanic, Vehicle vehicle, Double cost, Date fechaRecibido, Date fechaEntrega, Client client, String issues) {
+        this.folio = folio;
         this.typeOfWork = typeOfWork;
         this.mechanic = mechanic;
         this.vehicle = vehicle;
         this.cost = cost;
         this.fechaRecibido = fechaRecibido;
-        this.fechaEntregado = fechaEntregado;
+        this.fechaEntrega = fechaEntrega;
+        this.client = client;
+        this.issues = issues;
+    }
+
+    public Work(TypeOfWork typeOfWork, Mechanic mechanic, Vehicle vehicle, Double cost, Date fechaRecibido, Date fechaEntrega, Client client, String issues) {
+        this.typeOfWork = typeOfWork;
+        this.mechanic = mechanic;
+        this.vehicle = vehicle;
+        this.cost = cost;
+        this.fechaRecibido = fechaRecibido;
+        this.fechaEntrega = fechaEntrega;
         this.client = client;
         this.issues = issues;
     }
@@ -85,12 +97,12 @@ public class Work implements Serializable {
         this.fechaRecibido = fechaRecibido;
     }
 
-    public Date getFechaEntregado() {
-        return fechaEntregado;
+    public Date getFechaEntrega() {
+        return fechaEntrega;
     }
 
-    public void setFechaEntregado(Date fechaEntregado) {
-        this.fechaEntregado = fechaEntregado;
+    public void setFechaEntrega(Date fechaEntrega) {
+        this.fechaEntrega = fechaEntrega;
     }
 
     public Client getClient() {

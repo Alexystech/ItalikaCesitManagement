@@ -9,6 +9,7 @@ import com.itsx.slasher.italikacesitmanagement.model.Client;
 import com.itsx.slasher.italikacesitmanagement.model.Mechanic;
 import com.itsx.slasher.italikacesitmanagement.model.TypeOfWork;
 import com.itsx.slasher.italikacesitmanagement.model.Vehicle;
+import com.itsx.slasher.italikacesitmanagement.model.Work;
 import com.itsx.slasher.italikacesitmanagement.service.ClientService;
 import com.itsx.slasher.italikacesitmanagement.service.MechanicService;
 import com.itsx.slasher.italikacesitmanagement.service.TypeOfWorkService;
@@ -30,6 +31,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.util.Date;
+import java.util.List;
 import javax.swing.*;
 
 /**
@@ -76,6 +79,27 @@ public class DashboardController implements ActionListener {
         dashboardLayout.setLocationRelativeTo(null);
         dashboardLayout.setResizable(false);
         dashboardLayout.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        refreshList();
+    }
+
+    private void refreshList() {
+
+        dashboardLayout.typeServiceCBox.removeAllItems();
+        dashboardLayout.mechanicCBox.removeAllItems();
+        dashboardLayout.vehicleCBox.removeAllItems();
+        dashboardLayout.clientCBox.removeAllItems();
+
+        List<TypeOfWork> typeOfWorks = typeOfWorkService.getAllTypeOfWorks();
+        List<Mechanic> mechanics = mechanicService.getAllMechanics();
+        List<Vehicle> vehicles = vehicleService.getAllVehicles();
+        List<Client> clients = clientService.getAllClients();
+
+        typeOfWorks.forEach( item -> dashboardLayout.typeServiceCBox.addItem(item.getFolio()) );
+        mechanics.forEach( item -> dashboardLayout.mechanicCBox.addItem(item.getFolio()) );
+        vehicles.forEach( item -> dashboardLayout.vehicleCBox.addItem(item.getPlaque()) );
+        clients.forEach( item -> dashboardLayout.clientCBox.addItem(item.getFolio()) );
+
     }
 
     public void runValidations() {
@@ -285,6 +309,9 @@ public class DashboardController implements ActionListener {
 
         }
 
+        /**
+         * Action type of work button
+         */
         if ( arg0.getSource() == dashboardLayout.agregarTipoDeTrabajoButton ) {
 
             TypeOfWorkValidations typeOfWorkValidations = new TypeOfWorkValidationsImpl();
@@ -309,6 +336,7 @@ public class DashboardController implements ActionListener {
                 JOptionPane.showMessageDialog(null,"Tipo de trabajo generado con éxito!",
                         "Atencion", JOptionPane.INFORMATION_MESSAGE);
 
+                refreshList();
             }
 
         }
@@ -343,6 +371,8 @@ public class DashboardController implements ActionListener {
 
                 JOptionPane.showMessageDialog(null, "Vehiculo generado con éxito!"
                         , "Atencion", JOptionPane.INFORMATION_MESSAGE);
+
+                refreshList();
 
             }
 
@@ -382,6 +412,8 @@ public class DashboardController implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Mecanico generado con éxito!",
                         "Atencion", JOptionPane.INFORMATION_MESSAGE);
 
+                refreshList();
+
             }
 
         }
@@ -416,6 +448,63 @@ public class DashboardController implements ActionListener {
 
                 JOptionPane.showMessageDialog(null,"cliente generado con éxito",
                         "Atencion", JOptionPane.INFORMATION_MESSAGE);
+
+                refreshList();
+
+            }
+
+        }
+
+        if ( arg0.getSource() == dashboardLayout.agregarServicioButton ) {
+
+            WorkValidations workValidations = new WorkValidationsImpl();
+
+            if ( !workValidations.validateTypeServiceWork(dashboardLayout.typeServiceCBox, dashboardLayout.typeServiceWorkValidation) ||
+                !workValidations.validateMechanicWork(dashboardLayout.mechanicCBox, dashboardLayout.mechanicWorkValidation) ||
+                !workValidations.validateVehicleWork(dashboardLayout.vehicleCBox, dashboardLayout.vehicleWorkValidation) ||
+                !workValidations.validatePriceWork(dashboardLayout.priceServiceField, dashboardLayout.priceWorkValidation) ||
+                !workValidations.validateDateReceiveWork(dashboardLayout.dateReceive, dashboardLayout.dateReceiveWorkValidation) ||
+                !workValidations.validateDateSendWork(dashboardLayout.dateSend, dashboardLayout.dateSendWorkValidation) ||
+                !workValidations.validateClientWork(dashboardLayout.clientCBox, dashboardLayout.clientWorkValidation) ||
+                !workValidations.validateIssuesWork(dashboardLayout.issuesTPane, dashboardLayout.issuesWorkValidation)) {
+
+                JOptionPane.showMessageDialog(null, "llene correctamente los campos",
+                        "Atecion", JOptionPane.WARNING_MESSAGE);
+
+            } else {
+
+                Long typeOfWorkFolio = Long.parseLong(dashboardLayout.typeServiceCBox.getSelectedItem().toString());
+                Long mechanicFolio = Long.parseLong(dashboardLayout.mechanicCBox.getSelectedItem().toString());
+                String plaque = dashboardLayout.vehicleCBox.getSelectedItem().toString();
+                Long clientFolio = Long.parseLong(dashboardLayout.clientCBox.getSelectedItem().toString());
+
+                TypeOfWork typeOfService = typeOfWorkService.getTypeOfWorkByFolio(typeOfWorkFolio);
+                Mechanic mechanic = mechanicService.getMechanicByFolio(mechanicFolio);
+                Vehicle vehicle = vehicleService.getVehicleByPlaque(plaque);
+                double price = Double.parseDouble(dashboardLayout.priceServiceField.getText());
+                Date dateReceive = dashboardLayout.dateReceive.getDate();
+                Date dateSend = dashboardLayout.dateSend.getDate();
+                Client client = clientService.getClientByFolio(clientFolio);
+                String issues = dashboardLayout.issuesTPane.getText();
+
+                Work work = new Work(typeOfService, mechanic, vehicle, price, dateReceive
+                        , dateSend, client, issues);
+
+                workService.createWork(work);
+
+                dashboardLayout.typeServiceCBox.setSelectedIndex(0);
+                dashboardLayout.mechanicCBox.setSelectedIndex(0);
+                dashboardLayout.vehicleCBox.setSelectedIndex(0);
+                dashboardLayout.priceServiceField.setText("");
+                dashboardLayout.dateReceive.cleanup();
+                dashboardLayout.dateSend.cleanup();
+                dashboardLayout.clientCBox.setSelectedIndex(0);
+                dashboardLayout.issuesTPane.setText("");
+
+                JOptionPane.showMessageDialog(null, "trabajo generado con éxito",
+                        "Atencion", JOptionPane.INFORMATION_MESSAGE);
+
+                refreshList();
 
             }
 

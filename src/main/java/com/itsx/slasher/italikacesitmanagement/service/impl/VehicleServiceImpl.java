@@ -147,7 +147,7 @@ public class VehicleServiceImpl implements VehicleService{
                 final HttpResponse<String> httpResponse = this.httpClient
                         .send(requestVehicle, HttpResponse.BodyHandlers.ofString());
 
-                vehicle = converToObject(httpResponse.body(), new TypeReference<Vehicle>() {});
+                vehicle = convertToObject(httpResponse.body(), new TypeReference<Vehicle>() {});
 
                 System.out.println(httpResponse.statusCode());
                 System.out.println(httpResponse.body());
@@ -167,15 +167,15 @@ public class VehicleServiceImpl implements VehicleService{
 
         final HttpRequest requestVehicles = HttpRequest.newBuilder()
                 .timeout(Duration.ofMinutes(2))
-                .GET()
                 .uri(URI.create(URL_GET_ALL_VEHICLES))
+                .GET()
                 .build();
 
         try {
             final HttpResponse<String> httpResponse = this.httpClient
                     .send(requestVehicles, HttpResponse.BodyHandlers.ofString());
 
-            vehicles = converToObject(httpResponse.body(), new TypeReference<List<Vehicle>>() {});
+            vehicles = convertToObject(httpResponse.body(), new TypeReference<List<Vehicle>>() {});
             System.out.println(httpResponse.statusCode());
             System.out.println(httpResponse.body());
         } catch (IOException | InterruptedException e) {
@@ -184,7 +184,7 @@ public class VehicleServiceImpl implements VehicleService{
         return vehicles;
     }
 
-    private <T> T converToObject(String json, TypeReference<T> reference) {
+    private <T> T convertToObject(String json, TypeReference<T> reference) {
         try {
             return this.mapper.readValue(json, reference);
         } catch (JsonProcessingException e) {

@@ -509,7 +509,7 @@
                 </Component>
                 <Component class="com.toedter.calendar.JDateChooser" name="dateReceive">
                   <Properties>
-                    <Property name="dateFormatString" type="java.lang.String" value="yyyy/MM/dd HH:mm:ss"/>
+                    <Property name="dateFormatString" type="java.lang.String" value="yyyy/MM/dd HH:mm.ss"/>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -517,7 +517,7 @@
                 </Component>
                 <Component class="com.toedter.calendar.JDateChooser" name="dateSend">
                   <Properties>
-                    <Property name="dateFormatString" type="java.lang.String" value="yyyy/MM/dd HH:mm:ss"/>
+                    <Property name="dateFormatString" type="java.lang.String" value="yyyy/MM/dd HH:mm.ss"/>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
