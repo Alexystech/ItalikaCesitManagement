@@ -29,7 +29,7 @@ public class DashboardLayout extends javax.swing.JFrame {
 
         navbarDashboard = new javax.swing.JPanel();
         logoutLayoutButton = new javax.swing.JButton();
-        typeWorkLayoutButton = new javax.swing.JButton();
+        typeWorkDialogButton = new javax.swing.JButton();
         vehiclesLayoutButton = new javax.swing.JButton();
         mechanicsLayoutButton = new javax.swing.JButton();
         clientLayoutButton = new javax.swing.JButton();
@@ -134,7 +134,7 @@ public class DashboardLayout extends javax.swing.JFrame {
             }
         });
 
-        typeWorkLayoutButton.setText("T. Trabajos");
+        typeWorkDialogButton.setText("T. Trabajos");
 
         vehiclesLayoutButton.setText("Vehiculos");
 
@@ -158,7 +158,7 @@ public class DashboardLayout extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(vehiclesLayoutButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(typeWorkLayoutButton)
+                .addComponent(typeWorkDialogButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(logoutLayoutButton)
                 .addContainerGap())
@@ -169,7 +169,7 @@ public class DashboardLayout extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(navbarDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(logoutLayoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                    .addComponent(typeWorkLayoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(typeWorkDialogButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(vehiclesLayoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(mechanicsLayoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(clientLayoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -844,7 +844,7 @@ public class DashboardLayout extends javax.swing.JFrame {
     private javax.swing.JPanel tabbedDashboard;
     public javax.swing.JComboBox<Long> typeServiceCBox;
     public javax.swing.JLabel typeServiceWorkValidation;
-    public javax.swing.JButton typeWorkLayoutButton;
+    public javax.swing.JButton typeWorkDialogButton;
     public javax.swing.JComboBox<String> vehicleCBox;
     public javax.swing.JLabel vehicleWorkValidation;
     public javax.swing.JButton vehiclesLayoutButton;

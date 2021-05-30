@@ -10,11 +10,13 @@ import com.itsx.slasher.italikacesitmanagement.model.Mechanic;
 import com.itsx.slasher.italikacesitmanagement.model.TypeOfWork;
 import com.itsx.slasher.italikacesitmanagement.model.Vehicle;
 import com.itsx.slasher.italikacesitmanagement.model.Work;
+import com.itsx.slasher.italikacesitmanagement.service.AdministratorService;
 import com.itsx.slasher.italikacesitmanagement.service.ClientService;
 import com.itsx.slasher.italikacesitmanagement.service.MechanicService;
 import com.itsx.slasher.italikacesitmanagement.service.TypeOfWorkService;
 import com.itsx.slasher.italikacesitmanagement.service.VehicleService;
 import com.itsx.slasher.italikacesitmanagement.service.WorkService;
+import com.itsx.slasher.italikacesitmanagement.service.impl.AdministratorServiceImpl;
 import com.itsx.slasher.italikacesitmanagement.service.impl.TypeOfWorkServiceImpl;
 import com.itsx.slasher.italikacesitmanagement.validations.ClientValidations;
 import com.itsx.slasher.italikacesitmanagement.validations.MechanicValidations;
@@ -27,6 +29,9 @@ import com.itsx.slasher.italikacesitmanagement.validations.impl.TypeOfWorkValida
 import com.itsx.slasher.italikacesitmanagement.validations.impl.VehicleValidationsImpl;
 import com.itsx.slasher.italikacesitmanagement.validations.impl.WorkValidationsImpl;
 import com.itsx.slasher.italikacesitmanagement.view.DashboardLayout;
+import com.itsx.slasher.italikacesitmanagement.view.LoginLayout;
+import com.itsx.slasher.italikacesitmanagement.view.TypeOfWorksDialog;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
@@ -67,7 +72,7 @@ public class DashboardController implements ActionListener {
         this.dashboardLayout.clientLayoutButton.addActionListener(this);
         this.dashboardLayout.mechanicsLayoutButton.addActionListener(this);
         this.dashboardLayout.vehiclesLayoutButton.addActionListener(this);
-        this.dashboardLayout.typeWorkLayoutButton.addActionListener(this);
+        this.dashboardLayout.typeWorkDialogButton.addActionListener(this);
         this.dashboardLayout.logoutLayoutButton.addActionListener(this);
     }
     
@@ -305,7 +310,25 @@ public class DashboardController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent arg0) {
 
+        /**
+         * logout button action performed
+         */
         if ( arg0.getSource() == dashboardLayout.logoutLayoutButton ) {
+
+            dashboardLayout.setVisible(false);
+
+            LoginLayout loginLayout = new LoginLayout();
+            AdministratorService administratorService = new AdministratorServiceImpl();
+
+            LoginController loginController = new LoginController(loginLayout, administratorService);
+            loginController.start();
+            loginController.runValidations();
+
+        }
+
+        if ( arg0.getSource() == dashboardLayout.typeWorkDialogButton ) {
+
+            TypeOfWorksDialog typeOfWorksDialog = new TypeOfWorksDialog();
 
         }
 
