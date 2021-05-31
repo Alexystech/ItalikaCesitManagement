@@ -20,7 +20,7 @@ public class WorkValidationsImpl implements WorkValidations {
 
     @Override
     public boolean validateTypeServiceWork(JComboBox typeServiceCBox, JLabel typeServiceWorkValidation) {
-        if ( typeServiceCBox.getSelectedItem().toString().isEmpty() ) {
+        if ( typeServiceCBox.getSelectedItem().toString().equals("Selecciona un servicio") ) {
             typeServiceWorkValidation.setText("Seleccione un servicio");
             return false;
         } else {
@@ -31,8 +31,8 @@ public class WorkValidationsImpl implements WorkValidations {
 
     @Override
     public boolean validateMechanicWork(JComboBox mechanicCBox, JLabel mechanicWorkValidation) {
-        if ( mechanicCBox.getSelectedItem().toString().isEmpty() ) {
-            mechanicWorkValidation.setText("Seleccione un servicio");
+        if ( mechanicCBox.getSelectedItem().toString().equals("Selecciona un mecanico") ) {
+            mechanicWorkValidation.setText("Seleccione un mecanico");
             return false;
         } else {
             mechanicWorkValidation.setText("");
@@ -42,8 +42,8 @@ public class WorkValidationsImpl implements WorkValidations {
 
     @Override
     public boolean validateVehicleWork(JComboBox vehicleCBox, JLabel vehicleWorkValidation) {
-        if ( vehicleCBox.getSelectedItem().toString().isEmpty() ) {
-            vehicleWorkValidation.setText("Seleccione un servicio");
+        if ( vehicleCBox.getSelectedItem().toString().equals("Selecciona un vehiculo") ) {
+            vehicleWorkValidation.setText("Seleccione un vehiculo");
             return false;
         } else {
             vehicleWorkValidation.setText("");
@@ -89,8 +89,8 @@ public class WorkValidationsImpl implements WorkValidations {
 
     @Override
     public boolean validateClientWork(JComboBox clientCBox, JLabel clientWorkValidation) {
-        if ( clientCBox.getSelectedItem().toString().isEmpty() ) {
-            clientWorkValidation.setText("Seleccione un servicio");
+        if ( clientCBox.getSelectedItem().toString().equals("Selecciona un cliente") ) {
+            clientWorkValidation.setText("Seleccione un cliente");
             return false;
         } else {
             clientWorkValidation.setText("");

@@ -34,6 +34,7 @@ import com.itsx.slasher.italikacesitmanagement.view.LoginLayout;
 import com.itsx.slasher.italikacesitmanagement.view.MechanicDialog;
 import com.itsx.slasher.italikacesitmanagement.view.TypeOfWorksDialog;
 import com.itsx.slasher.italikacesitmanagement.view.VehicleDialog;
+import com.itsx.slasher.italikacesitmanagement.view.WorkDialog;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -373,6 +374,19 @@ public class DashboardController implements ActionListener {
             ClientController clientController = new ClientController(clientDialog, clientService, workService);
 
             clientController.start();
+
+        }
+
+        /**
+         * actions update/delete work dialog button
+         */
+        if ( arg0.getSource() == dashboardLayout.serviceManagerLayoutButton ) {
+
+            WorkDialog workDialog = new WorkDialog(workService);
+            WorkController workController = new WorkController(workService, workDialog, typeOfWorkService
+                    , vehicleService, mechanicService, clientService);
+
+            workController.start();
 
         }
 
