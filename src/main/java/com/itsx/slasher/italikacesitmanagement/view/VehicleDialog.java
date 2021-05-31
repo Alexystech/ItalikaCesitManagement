@@ -5,17 +5,27 @@
  */
 package com.itsx.slasher.italikacesitmanagement.view;
 
+import com.itsx.slasher.italikacesitmanagement.model.Vehicle;
+import com.itsx.slasher.italikacesitmanagement.service.VehicleService;
+
 /**
  *
  * @author defin
  */
 public class VehicleDialog extends javax.swing.JFrame {
 
+    private VehicleService vehicleService;
+
     /**
      * Creates new form VehicleDialog
      */
-    public VehicleDialog() {
+    public VehicleDialog(VehicleService vehicleService) {
         initComponents();
+        setTitle("Vehiculo");
+        setResizable(true);
+        setLocationRelativeTo(null);
+
+        this.vehicleService = vehicleService;
     }
 
     /**
@@ -44,8 +54,6 @@ public class VehicleDialog extends javax.swing.JFrame {
         yearVehicleDialogCBox = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableVehicleDialog = new javax.swing.JTable();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Vehiculo");
@@ -153,6 +161,11 @@ public class VehicleDialog extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tableVehicleDialog.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableVehicleDialogMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tableVehicleDialog);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -183,6 +196,34 @@ public class VehicleDialog extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_deleteVehicleDialogButtonActionPerformed
 
+    private void tableVehicleDialogMouseClicked(java.awt.event.MouseEvent evt) {
+
+        int row = tableVehicleDialog.getSelectedRow();
+        String plaqueSelected = tableVehicleDialog.getValueAt(row, 0).toString();
+
+        Vehicle selectedVehicle = vehicleService.getVehicleByPlaque(plaqueSelected);
+
+        plaqueVehicleDialogField.setText(selectedVehicle.getPlaque());
+        brandVehicleDialogField.setText(selectedVehicle.getBrand());
+        modelVehicleDialogField.setText(selectedVehicle.getModel());
+        yearVehicleDialogCBox.setSelectedIndex(selectedIndexOfYearCBox(selectedVehicle.getYear()));
+
+    }
+
+    private int selectedIndexOfYearCBox(int year) {
+
+        int selectedIndex = 0;
+
+        for (int index = 0; index < yearVehicleDialogCBox.getItemCount(); index++) {
+            if ( year == Integer.parseInt(yearVehicleDialogCBox.getItemAt(index) ) ) {
+                selectedIndex = index;
+                break;
+            }
+        }
+
+        return selectedIndex;
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -211,11 +252,11 @@ public class VehicleDialog extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VehicleDialog().setVisible(true);
-            }
-        });
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new VehicleDialog().setVisible(true);
+//            }
+//        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

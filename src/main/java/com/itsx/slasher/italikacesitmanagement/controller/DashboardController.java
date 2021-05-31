@@ -31,6 +31,7 @@ import com.itsx.slasher.italikacesitmanagement.validations.impl.WorkValidationsI
 import com.itsx.slasher.italikacesitmanagement.view.DashboardLayout;
 import com.itsx.slasher.italikacesitmanagement.view.LoginLayout;
 import com.itsx.slasher.italikacesitmanagement.view.TypeOfWorksDialog;
+import com.itsx.slasher.italikacesitmanagement.view.VehicleDialog;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -326,6 +327,9 @@ public class DashboardController implements ActionListener {
 
         }
 
+        /**
+         * Actions update/delete type of work dialog button
+         */
         if ( arg0.getSource() == dashboardLayout.typeWorkDialogButton ) {
 
             TypeOfWorksDialog typeOfWorksDialog = new TypeOfWorksDialog(typeOfWorkService);
@@ -335,7 +339,19 @@ public class DashboardController implements ActionListener {
         }
 
         /**
-         * Action type of work button
+         * Actions update/delete vehicle dialog button
+         */
+        if ( arg0.getSource() == dashboardLayout.vehiclesLayoutButton ) {
+
+            VehicleDialog vehicleDialog = new VehicleDialog(vehicleService);
+            VehicleController vehicleController = new VehicleController(vehicleDialog, vehicleService, workService);
+
+            vehicleController.start();
+
+        }
+
+        /**
+         * Add type of work action button
          */
         if ( arg0.getSource() == dashboardLayout.agregarTipoDeTrabajoButton ) {
 
@@ -366,6 +382,9 @@ public class DashboardController implements ActionListener {
 
         }
 
+        /**
+         * add vehicle action button
+         */
         if ( arg0.getSource() == dashboardLayout.agregarVehiculoButton ) {
 
             VehicleValidations vehicleValidations = new VehicleValidationsImpl();
@@ -403,6 +422,9 @@ public class DashboardController implements ActionListener {
 
         }
 
+        /**
+         * add mechanic action button
+         */
         if ( arg0.getSource() == dashboardLayout.agregarMecanicoButton ) {
 
             MechanicValidations mechanicValidations = new MechanicValidationsImpl();
@@ -443,6 +465,9 @@ public class DashboardController implements ActionListener {
 
         }
 
+        /**
+         * add client action button
+         */
         if ( arg0.getSource() == dashboardLayout.agregarClienteButton ) {
 
             ClientValidations clientValidations = new ClientValidationsImpl();
@@ -480,6 +505,9 @@ public class DashboardController implements ActionListener {
 
         }
 
+        /**
+         * add service action button
+         */
         if ( arg0.getSource() == dashboardLayout.agregarServicioButton ) {
 
             WorkValidations workValidations = new WorkValidationsImpl();

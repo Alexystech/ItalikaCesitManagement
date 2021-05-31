@@ -11,6 +11,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class TypeOfWorkController implements ActionListener {
 
@@ -29,7 +31,22 @@ public class TypeOfWorkController implements ActionListener {
 
     public void start() {
         typeOfWorksDialog.setVisible(true);
+        runValidations();
         refreshTable();
+    }
+
+    public void runValidations() {
+
+        typeOfWorksDialog.nameTWorkDialogField.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusLost(FocusEvent e) {
+                TypeOfWorkValidations typeOfWorkValidations = new TypeOfWorkValidationsImpl();
+
+                typeOfWorkValidations.validateNameTypeOfWork(typeOfWorksDialog.nameTWorkDialogField
+                        , typeOfWorksDialog.nameTWorkDialogValidation);
+            }
+        });
+
     }
 
     public void refreshTable() {
@@ -49,7 +66,7 @@ public class TypeOfWorkController implements ActionListener {
     }
 
     private int deleteAllItemsOfTable(int rowCount, DefaultTableModel model, int index) {
-        if (rowCount == 0) {
+        if ( rowCount == 0 ) {
             return 0;
         } else {
             model.removeRow(index);

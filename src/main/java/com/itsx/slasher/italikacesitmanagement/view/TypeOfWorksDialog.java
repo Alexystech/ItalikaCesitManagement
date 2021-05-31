@@ -24,7 +24,7 @@ public class TypeOfWorksDialog extends javax.swing.JFrame {
     public TypeOfWorksDialog(TypeOfWorkService typeOfWorkService) {
         initComponents();
         setTitle("Tipo de trabajo");
-        setResizable(false);
+        setResizable(true);
         setLocationRelativeTo(null);
 
         this.typeOfWorkService = typeOfWorkService;

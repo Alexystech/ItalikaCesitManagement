@@ -72,7 +72,8 @@ public class VehicleValidationsImpl implements VehicleValidations {
 
     @Override
     public boolean validateYearVehicle(JComboBox yearVehicleCBox, JLabel yearVehicleValidation) {
-        if ( yearVehicleCBox.getSelectedItem().toString().isEmpty() ) {
+        int year = Integer.parseInt(yearVehicleCBox.getSelectedItem().toString());
+        if ( year == 0 ) {
             yearVehicleValidation.setText("Seleccione un año");
             return false;
         } else {
