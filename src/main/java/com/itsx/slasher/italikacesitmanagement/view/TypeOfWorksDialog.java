@@ -5,17 +5,29 @@
  */
 package com.itsx.slasher.italikacesitmanagement.view;
 
+import com.itsx.slasher.italikacesitmanagement.model.TypeOfWork;
+import com.itsx.slasher.italikacesitmanagement.service.TypeOfWorkService;
+
+import javax.swing.*;
+
 /**
  *
  * @author defin
  */
-public class TypeOfWorksDialog extends javax.swing.JDialog {
+public class TypeOfWorksDialog extends javax.swing.JFrame {
+
+    private TypeOfWorkService typeOfWorkService;
 
     /**
      * Creates new form TypeOfWorksDialog
      */
-    public TypeOfWorksDialog() {
+    public TypeOfWorksDialog(TypeOfWorkService typeOfWorkService) {
         initComponents();
+        setTitle("Tipo de trabajo");
+        setResizable(false);
+        setLocationRelativeTo(null);
+
+        this.typeOfWorkService = typeOfWorkService;
     }
 
     /**
@@ -42,10 +54,10 @@ public class TypeOfWorksDialog extends javax.swing.JDialog {
 
         tableTWorkDialog.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2"
+                "Folio", "Nombre del tipo de trabajo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -54,6 +66,11 @@ public class TypeOfWorksDialog extends javax.swing.JDialog {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tableTWorkDialog.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableTWorkDialogMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tableTWorkDialog);
@@ -154,8 +171,20 @@ public class TypeOfWorksDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void updateTWorkDialogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateTWorkDialogButtonActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_updateTWorkDialogButtonActionPerformed
+
+    private void tableTWorkDialogMouseClicked(java.awt.event.MouseEvent evt) {
+
+        int row = tableTWorkDialog.getSelectedRow();
+        Long selectedFolio = Long.parseLong(tableTWorkDialog.getValueAt(row, 0).toString());
+
+        TypeOfWork typeOfWorkSelected = typeOfWorkService.getTypeOfWorkByFolio(selectedFolio);
+
+        folioTWorkDialogField.setText(typeOfWorkSelected.getFolio().toString());
+        nameTWorkDialogField.setText(typeOfWorkSelected.getNameOfWork());
+
+    }
 
     /**
      * @param args the command line arguments
@@ -164,7 +193,7 @@ public class TypeOfWorksDialog extends javax.swing.JDialog {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -185,11 +214,11 @@ public class TypeOfWorksDialog extends javax.swing.JDialog {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TypeOfWorksDialog().setVisible(true);
-            }
-        });
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new TypeOfWorksDialog().setVisible(true);
+//            }
+//        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

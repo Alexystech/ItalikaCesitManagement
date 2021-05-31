@@ -328,8 +328,10 @@ public class DashboardController implements ActionListener {
 
         if ( arg0.getSource() == dashboardLayout.typeWorkDialogButton ) {
 
-            TypeOfWorksDialog typeOfWorksDialog = new TypeOfWorksDialog();
+            TypeOfWorksDialog typeOfWorksDialog = new TypeOfWorksDialog(typeOfWorkService);
+            TypeOfWorkController typeOfWorkController = new TypeOfWorkController(typeOfWorksDialog, typeOfWorkService, workService);
 
+            typeOfWorkController.start();
         }
 
         /**

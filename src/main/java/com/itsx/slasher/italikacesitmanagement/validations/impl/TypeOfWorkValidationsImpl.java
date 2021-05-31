@@ -5,6 +5,7 @@
  */
 package com.itsx.slasher.italikacesitmanagement.validations.impl;
 
+import com.itsx.slasher.italikacesitmanagement.service.WorkService;
 import com.itsx.slasher.italikacesitmanagement.validations.TypeOfWorkValidations;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -33,5 +34,11 @@ public class TypeOfWorkValidationsImpl implements TypeOfWorkValidations {
             return false;
         }
     }
-    
+
+    @Override
+    public boolean validateReferencesInOtherEntities(long folio, WorkService workService) {
+        return workService.getAllWorks()
+                .stream()
+                .anyMatch( item -> item.getTypeOfWork().getFolio() == folio );
+    }
 }

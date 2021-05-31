@@ -5,6 +5,8 @@
  */
 package com.itsx.slasher.italikacesitmanagement.validations;
 
+import com.itsx.slasher.italikacesitmanagement.service.WorkService;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -14,4 +16,5 @@ import javax.swing.JTextField;
  */
 public interface TypeOfWorkValidations {
     boolean validateNameTypeOfWork(JTextField nameTWorkField, JLabel nameTWorkValidation);
+    boolean validateReferencesInOtherEntities(long folio, WorkService workService);
 }

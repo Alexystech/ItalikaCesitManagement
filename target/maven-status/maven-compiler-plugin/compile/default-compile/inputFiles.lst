@@ -4,6 +4,7 @@ C:\Users\defin\OneDrive\Documentos\NetBeansProjects\ItalikaCesitManagement\src\m
 C:\Users\defin\OneDrive\Documentos\NetBeansProjects\ItalikaCesitManagement\src\main\java\com\itsx\slasher\italikacesitmanagement\service\TypeOfWorkService.java
 C:\Users\defin\OneDrive\Documentos\NetBeansProjects\ItalikaCesitManagement\src\main\java\com\itsx\slasher\italikacesitmanagement\model\Vehicle.java
 C:\Users\defin\OneDrive\Documentos\NetBeansProjects\ItalikaCesitManagement\src\main\java\com\itsx\slasher\italikacesitmanagement\service\MechanicService.java
+C:\Users\defin\OneDrive\Documentos\NetBeansProjects\ItalikaCesitManagement\src\main\java\com\itsx\slasher\italikacesitmanagement\controller\TypeOfWorkController.java
 C:\Users\defin\OneDrive\Documentos\NetBeansProjects\ItalikaCesitManagement\src\main\java\com\itsx\slasher\italikacesitmanagement\model\TypeOfWork.java
 C:\Users\defin\OneDrive\Documentos\NetBeansProjects\ItalikaCesitManagement\src\main\java\com\itsx\slasher\italikacesitmanagement\validations\impl\TypeOfWorkValidationsImpl.java
 C:\Users\defin\OneDrive\Documentos\NetBeansProjects\ItalikaCesitManagement\src\main\java\com\itsx\slasher\italikacesitmanagement\validations\WorkValidations.java
@@ -19,6 +20,7 @@ C:\Users\defin\OneDrive\Documentos\NetBeansProjects\ItalikaCesitManagement\src\m
 C:\Users\defin\OneDrive\Documentos\NetBeansProjects\ItalikaCesitManagement\src\main\java\com\itsx\slasher\italikacesitmanagement\service\VehicleService.java
 C:\Users\defin\OneDrive\Documentos\NetBeansProjects\ItalikaCesitManagement\src\main\java\com\itsx\slasher\italikacesitmanagement\controller\LoginController.java
 C:\Users\defin\OneDrive\Documentos\NetBeansProjects\ItalikaCesitManagement\src\main\java\com\itsx\slasher\italikacesitmanagement\validations\VehicleValidations.java
+C:\Users\defin\OneDrive\Documentos\NetBeansProjects\ItalikaCesitManagement\src\main\java\com\itsx\slasher\italikacesitmanagement\view\TypeOfWorksDialog.java
 C:\Users\defin\OneDrive\Documentos\NetBeansProjects\ItalikaCesitManagement\src\main\java\com\itsx\slasher\italikacesitmanagement\service\impl\WorkServiceImpl.java
 C:\Users\defin\OneDrive\Documentos\NetBeansProjects\ItalikaCesitManagement\src\main\java\com\itsx\slasher\italikacesitmanagement\service\AdministratorService.java
 C:\Users\defin\OneDrive\Documentos\NetBeansProjects\ItalikaCesitManagement\src\main\java\com\itsx\slasher\italikacesitmanagement\controller\DashboardController.java
