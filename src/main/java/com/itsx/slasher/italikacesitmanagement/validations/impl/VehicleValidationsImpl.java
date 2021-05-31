@@ -5,6 +5,7 @@
  */
 package com.itsx.slasher.italikacesitmanagement.validations.impl;
 
+import com.itsx.slasher.italikacesitmanagement.service.WorkService;
 import com.itsx.slasher.italikacesitmanagement.validations.VehicleValidations;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -79,5 +80,11 @@ public class VehicleValidationsImpl implements VehicleValidations {
             return true;
         }
     }
-    
+
+    @Override
+    public boolean validateReferencesInOtherEntites(String plaque, WorkService workService) {
+        return workService.getAllWorks()
+                .stream()
+                .anyMatch( item -> item.getVehicle().getPlaque().equals(plaque) );
+    }
 }

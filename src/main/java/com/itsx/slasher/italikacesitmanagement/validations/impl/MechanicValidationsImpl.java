@@ -5,6 +5,7 @@
  */
 package com.itsx.slasher.italikacesitmanagement.validations.impl;
 
+import com.itsx.slasher.italikacesitmanagement.service.WorkService;
 import com.itsx.slasher.italikacesitmanagement.validations.MechanicValidations;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -104,5 +105,11 @@ public class MechanicValidationsImpl implements MechanicValidations {
             return false;
         }
     }
-    
+
+    @Override
+    public boolean validateReferencesInOtherEntities(long folio, WorkService workService) {
+        return workService.getAllWorks()
+                .stream()
+                .anyMatch( item -> item.getMechanic().getFolio() == folio );
+    }
 }

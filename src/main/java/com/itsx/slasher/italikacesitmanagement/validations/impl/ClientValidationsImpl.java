@@ -5,6 +5,7 @@
  */
 package com.itsx.slasher.italikacesitmanagement.validations.impl;
 
+import com.itsx.slasher.italikacesitmanagement.service.WorkService;
 import com.itsx.slasher.italikacesitmanagement.validations.ClientValidations;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -87,5 +88,11 @@ public class ClientValidationsImpl implements ClientValidations {
             return false;
         }
     }
-    
+
+    @Override
+    public boolean validateReferencesInOtherEntities(long folio, WorkService workService) {
+        return workService.getAllWorks()
+                .stream()
+                .anyMatch( item -> item.getClient().getFolio() == folio );
+    }
 }

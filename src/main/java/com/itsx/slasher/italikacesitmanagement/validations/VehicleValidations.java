@@ -5,6 +5,8 @@
  */
 package com.itsx.slasher.italikacesitmanagement.validations;
 
+import com.itsx.slasher.italikacesitmanagement.service.WorkService;
+
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -18,4 +20,5 @@ public interface VehicleValidations {
     boolean validateBrandVehicle(JTextField brandVehicleField, JLabel brandVehicleValidation);
     boolean validateModelVehicle(JTextField modelVehicleField, JLabel modelVehicleValidation);
     boolean validateYearVehicle(JComboBox yearVehicleCBox, JLabel yearVehicleValidation);
+    boolean validateReferencesInOtherEntites(String plaque, WorkService workService);
 }

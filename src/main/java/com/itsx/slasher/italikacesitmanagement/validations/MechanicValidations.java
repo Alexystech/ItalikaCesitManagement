@@ -5,6 +5,8 @@
  */
 package com.itsx.slasher.italikacesitmanagement.validations;
 
+import com.itsx.slasher.italikacesitmanagement.service.WorkService;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -18,4 +20,5 @@ public interface MechanicValidations {
     boolean validateMechanicMotherLastName(JTextField motherLastNameMechanicField, JLabel motherLastNameMechanicValidation);
     boolean validateMechanicSpeciality(JTextField specialityMechanicField, JLabel specialityMechanicValidation);
     boolean validateMechanicCellphone(JTextField cellphoneMechanicField, JLabel cellphoneMechanicValidation);
+    boolean validateReferencesInOtherEntities(long folio, WorkService workService);
 }
