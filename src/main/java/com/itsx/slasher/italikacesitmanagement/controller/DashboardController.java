@@ -30,6 +30,7 @@ import com.itsx.slasher.italikacesitmanagement.validations.impl.VehicleValidatio
 import com.itsx.slasher.italikacesitmanagement.validations.impl.WorkValidationsImpl;
 import com.itsx.slasher.italikacesitmanagement.view.DashboardLayout;
 import com.itsx.slasher.italikacesitmanagement.view.LoginLayout;
+import com.itsx.slasher.italikacesitmanagement.view.MechanicDialog;
 import com.itsx.slasher.italikacesitmanagement.view.TypeOfWorksDialog;
 import com.itsx.slasher.italikacesitmanagement.view.VehicleDialog;
 
@@ -347,6 +348,18 @@ public class DashboardController implements ActionListener {
             VehicleController vehicleController = new VehicleController(vehicleDialog, vehicleService, workService);
 
             vehicleController.start();
+
+        }
+
+        /**
+         * Actions update/delete mechanic dialog button
+         */
+        if ( arg0.getSource() == dashboardLayout.mechanicsLayoutButton ) {
+
+            MechanicDialog mechanicDialog = new MechanicDialog(mechanicService);
+            MechanicController mechanicController = new MechanicController(mechanicDialog, mechanicService, workService);
+
+            mechanicController.start();
 
         }
 
