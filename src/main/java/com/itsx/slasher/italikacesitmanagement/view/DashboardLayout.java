@@ -199,11 +199,11 @@ public class DashboardLayout extends javax.swing.JFrame {
 
         jLabel19.setText("Tipo de servicio");
 
-        typeServiceCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new Long[] { 0L }));
+        typeServiceCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
 
         jLabel20.setText("Mecanico encargado");
 
-        mechanicCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new Long[] { 0L }));
+        mechanicCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
 
         jLabel21.setText("Vehiculo a reparar");
 
@@ -221,7 +221,7 @@ public class DashboardLayout extends javax.swing.JFrame {
 
         jLabel25.setText("Folio de cliente");
 
-        clientCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new Long[] { 0L }));
+        clientCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
 
         jLabel26.setText("Fallas");
 
@@ -762,7 +762,7 @@ public class DashboardLayout extends javax.swing.JFrame {
     public javax.swing.JLabel cellphoneClientValidation;
     public javax.swing.JTextField cellphoneMechanicField;
     public javax.swing.JLabel cellphoneMechanicValidation;
-    public javax.swing.JComboBox<Long> clientCBox;
+    public javax.swing.JComboBox<String> clientCBox;
     public javax.swing.JButton clientLayoutButton;
     public javax.swing.JLabel clientWorkValidation;
     public com.toedter.calendar.JDateChooser dateReceive;
@@ -817,7 +817,7 @@ public class DashboardLayout extends javax.swing.JFrame {
     public javax.swing.JTextField lastNameMechanicField;
     public javax.swing.JLabel lastNameMechanicValidation;
     public javax.swing.JButton logoutLayoutButton;
-    public javax.swing.JComboBox<Long> mechanicCBox;
+    public javax.swing.JComboBox<String> mechanicCBox;
     public javax.swing.JLabel mechanicWorkValidation;
     public javax.swing.JButton mechanicsLayoutButton;
     public javax.swing.JTextField modelVehicleField;
@@ -842,7 +842,7 @@ public class DashboardLayout extends javax.swing.JFrame {
     public javax.swing.JTextField specialityMechanicField;
     public javax.swing.JLabel specialityMechanicValidation;
     private javax.swing.JPanel tabbedDashboard;
-    public javax.swing.JComboBox<Long> typeServiceCBox;
+    public javax.swing.JComboBox<String> typeServiceCBox;
     public javax.swing.JLabel typeServiceWorkValidation;
     public javax.swing.JButton typeWorkDialogButton;
     public javax.swing.JComboBox<String> vehicleCBox;

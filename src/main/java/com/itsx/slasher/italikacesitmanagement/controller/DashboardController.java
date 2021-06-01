@@ -104,10 +104,15 @@ public class DashboardController implements ActionListener {
         List<Vehicle> vehicles = vehicleService.getAllVehicles();
         List<Client> clients = clientService.getAllClients();
 
-        typeOfWorks.forEach( item -> dashboardLayout.typeServiceCBox.addItem(item.getFolio()) );
-        mechanics.forEach( item -> dashboardLayout.mechanicCBox.addItem(item.getFolio()) );
+        dashboardLayout.typeServiceCBox.addItem("Selecciona un servicio");
+        dashboardLayout.mechanicCBox.addItem("Selecciona un mecanico");
+        dashboardLayout.vehicleCBox.addItem("Selecciona un vehiculo");
+        dashboardLayout.clientCBox.addItem("Selecciona un cliente");
+
+        typeOfWorks.forEach( item -> dashboardLayout.typeServiceCBox.addItem(item.getFolio().toString()) );
+        mechanics.forEach( item -> dashboardLayout.mechanicCBox.addItem(item.getFolio().toString()) );
         vehicles.forEach( item -> dashboardLayout.vehicleCBox.addItem(item.getPlaque()) );
-        clients.forEach( item -> dashboardLayout.clientCBox.addItem(item.getFolio()) );
+        clients.forEach( item -> dashboardLayout.clientCBox.addItem(item.getFolio().toString()) );
 
     }
 
@@ -593,6 +598,8 @@ public class DashboardController implements ActionListener {
                 dashboardLayout.dateSend.cleanup();
                 dashboardLayout.clientCBox.setSelectedIndex(0);
                 dashboardLayout.issuesTPane.setText("");
+                ((JTextField) dashboardLayout.dateReceive.getDateEditor().getUiComponent()).setText("");
+                ((JTextField) dashboardLayout.dateSend.getDateEditor().getUiComponent()).setText("");
 
                 JOptionPane.showMessageDialog(null, "trabajo generado con éxito",
                         "Atencion", JOptionPane.INFORMATION_MESSAGE);
