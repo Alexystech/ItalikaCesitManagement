@@ -73,8 +73,10 @@ public class DashboardController implements ActionListener, Runnable {
 
     private JFreeChart barChart;
     private JFreeChart pieChartMechanic;
+    private JFreeChart pieChartClient;
     private ChartPanel panelBarChart;
     private ChartPanel panelPieChartMechanic;
+    private ChartPanel panelPieChartClient;
     
     public DashboardController(DashboardLayout dashboardLayout, ClientService clientService
             , MechanicService mechanicService, TypeOfWorkService typeOfWorkService
@@ -127,8 +129,17 @@ public class DashboardController implements ActionListener, Runnable {
                 false
         );
 
+        pieChartClient = ChartFactory.createPieChart(
+                "Cantidad de trabajos por cliente",
+                null,
+                true,
+                true,
+                false
+        );
+
         panelBarChart = new ChartPanel(barChart);
         panelPieChartMechanic = new ChartPanel(pieChartMechanic);
+        panelPieChartClient = new ChartPanel(pieChartClient);
 
         panelBarChart.setMouseWheelEnabled(true);
         panelBarChart.setPreferredSize(new Dimension(556,500));
@@ -136,11 +147,17 @@ public class DashboardController implements ActionListener, Runnable {
         panelPieChartMechanic.setMouseWheelEnabled(true);
         panelPieChartMechanic.setPreferredSize(new Dimension(400,250));
 
+        panelPieChartClient.setMouseWheelEnabled(true);
+        panelPieChartClient.setPreferredSize(new Dimension(400,250));
+
         this.dashboardLayout.barChart.setLayout(new BorderLayout());
         this.dashboardLayout.barChart.add(panelBarChart, BorderLayout.NORTH);
 
         this.dashboardLayout.paiChart1.setLayout(new BorderLayout());
         this.dashboardLayout.paiChart1.add(panelPieChartMechanic, BorderLayout.NORTH);
+
+        this.dashboardLayout.paiChart2.setLayout(new BorderLayout());
+        this.dashboardLayout.paiChart2.add(panelPieChartClient, BorderLayout.NORTH);
 
         refreshList();
     }
@@ -403,6 +420,23 @@ public class DashboardController implements ActionListener, Runnable {
                 pieDatasetMechanic.setValue(key, data);
             });
 
+            /**
+             * data pie chart client
+             */
+            List<Long> folioClients = this.clientService.getAllClients().stream()
+                    .map(Client::getFolio)
+                    .collect(Collectors.toList());
+
+            Map<String, Integer> dataPieChartClient = dataPieChartClient(folioClients, works);
+            DefaultPieDataset pieDatasetClient = new DefaultPieDataset();
+
+            dataPieChartClient.forEach( (key, data) -> {
+                pieDatasetClient.setValue(key, data);
+            });
+
+            /**
+             * plot charts
+             */
             barChart = ChartFactory.createBarChart(
                     "Cantidad de servicios por modelo",
                     "Modelos",
@@ -427,6 +461,17 @@ public class DashboardController implements ActionListener, Runnable {
 
             panelPieChartMechanic.setChart(pieChartMechanic);
             this.dashboardLayout.paiChart1.repaint();
+
+            pieChartClient = ChartFactory.createPieChart(
+                    "Cantidad de trabajos por cliente",
+                    pieDatasetClient,
+                    true,
+                    true,
+                    false
+            );
+
+            panelPieChartClient.setChart(pieChartClient);
+            this.dashboardLayout.paiChart2.repaint();
 
             try {
                 Thread.sleep(5000);
@@ -464,6 +509,25 @@ public class DashboardController implements ActionListener, Runnable {
 
             data.put(nameMechanic, (int) works.stream()
                     .filter(work -> work.getMechanic().getFolio().equals(folio))
+                    .count()
+            );
+
+        }
+
+        return data;
+    }
+
+    private Map<String, Integer> dataPieChartClient(List<Long> folioClients, List<Work> works) {
+
+        Map<String, Integer> data = new HashMap<>();
+
+        for ( Long folio : folioClients ) {
+
+            Client client = clientService.getClientByFolio(folio);
+            String nameClient = "F" + folio + " - " + client.getName() + " " + client.getLastName();
+
+            data.put(nameClient, (int) works.stream()
+                    .filter(work -> work.getClient().getFolio().equals(folio))
                     .count()
             );
 
