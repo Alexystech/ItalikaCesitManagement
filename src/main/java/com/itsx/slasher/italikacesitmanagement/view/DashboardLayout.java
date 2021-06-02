@@ -34,6 +34,7 @@ public class DashboardLayout extends javax.swing.JFrame {
         mechanicsLayoutButton = new javax.swing.JButton();
         clientLayoutButton = new javax.swing.JButton();
         serviceManagerLayoutButton = new javax.swing.JButton();
+        logoItalika = new javax.swing.JLabel();
         tabbedDashboard = new javax.swing.JPanel();
         paneDashboard = new javax.swing.JTabbedPane();
         graphSpace = new javax.swing.JPanel();
@@ -145,14 +146,18 @@ public class DashboardLayout extends javax.swing.JFrame {
 
         clientLayoutButton.setText("Clientes");
 
-        serviceManagerLayoutButton.setText("Servisios");
+        serviceManagerLayoutButton.setText("Servicios");
+
+        logoItalika.setIcon(new javax.swing.ImageIcon("C:\\Users\\defin\\OneDrive\\Imágenes\\italika (1).png")); // NOI18N
 
         javax.swing.GroupLayout navbarDashboardLayout = new javax.swing.GroupLayout(navbarDashboard);
         navbarDashboard.setLayout(navbarDashboardLayout);
         navbarDashboardLayout.setHorizontalGroup(
             navbarDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, navbarDashboardLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(logoItalika, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(serviceManagerLayoutButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(clientLayoutButton)
@@ -171,13 +176,14 @@ public class DashboardLayout extends javax.swing.JFrame {
             .addGroup(navbarDashboardLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(navbarDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(logoutLayoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                    .addComponent(logoutLayoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(typeWorkDialogButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(vehiclesLayoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(mechanicsLayoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(clientLayoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(serviceManagerLayoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addComponent(logoItalika, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         paneDashboard.setToolTipText("");
@@ -198,7 +204,7 @@ public class DashboardLayout extends javax.swing.JFrame {
         paiChart1.setLayout(paiChart1Layout);
         paiChart1Layout.setHorizontalGroup(
             paiChart1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 324, Short.MAX_VALUE)
         );
         paiChart1Layout.setVerticalGroup(
             paiChart1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,11 +215,11 @@ public class DashboardLayout extends javax.swing.JFrame {
         paiChart2.setLayout(paiChart2Layout);
         paiChart2Layout.setHorizontalGroup(
             paiChart2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 314, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         paiChart2Layout.setVerticalGroup(
             paiChart2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 244, Short.MAX_VALUE)
+            .addGap(0, 321, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout graphSpaceLayout = new javax.swing.GroupLayout(graphSpace);
@@ -226,9 +232,7 @@ public class DashboardLayout extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(graphSpaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(paiChart1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(graphSpaceLayout.createSequentialGroup()
-                        .addComponent(paiChart2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 10, Short.MAX_VALUE)))
+                    .addComponent(paiChart2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         graphSpaceLayout.setVerticalGroup(
@@ -393,7 +397,7 @@ public class DashboardLayout extends javax.swing.JFrame {
                 .addComponent(issuesWorkValidation)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(agregarServicioButton)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         paneDashboard.addTab("Nuevo servicio", formWork);
@@ -485,7 +489,7 @@ public class DashboardLayout extends javax.swing.JFrame {
                 .addComponent(cellphoneClientValidation)
                 .addGap(29, 29, 29)
                 .addComponent(agregarClienteButton)
-                .addContainerGap(211, Short.MAX_VALUE))
+                .addContainerGap(288, Short.MAX_VALUE))
         );
 
         paneDashboard.addTab("Agregar cliente", formClient);
@@ -590,7 +594,7 @@ public class DashboardLayout extends javax.swing.JFrame {
                 .addComponent(cellphoneMechanicValidation)
                 .addGap(18, 18, 18)
                 .addComponent(agregarMecanicoButton)
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(218, Short.MAX_VALUE))
         );
 
         paneDashboard.addTab("Agregar mecanico", formMechanic);
@@ -677,7 +681,7 @@ public class DashboardLayout extends javax.swing.JFrame {
                 .addComponent(yearVehicleValidation)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(agregarVehiculoButton)
-                .addContainerGap(266, Short.MAX_VALUE))
+                .addContainerGap(343, Short.MAX_VALUE))
         );
 
         paneDashboard.addTab("Agregar vehiculo", formVehicle);
@@ -738,7 +742,7 @@ public class DashboardLayout extends javax.swing.JFrame {
                 .addComponent(nameTWorkValidation)
                 .addGap(18, 18, 18)
                 .addComponent(agregarTipoDeTrabajoButton)
-                .addContainerGap(274, Short.MAX_VALUE))
+                .addContainerGap(351, Short.MAX_VALUE))
         );
 
         paneDashboard.addTab("Agregar tipo de trabajo", formTypeOfWork);
@@ -870,6 +874,7 @@ public class DashboardLayout extends javax.swing.JFrame {
     public javax.swing.JLabel lastNameClientValidation;
     public javax.swing.JTextField lastNameMechanicField;
     public javax.swing.JLabel lastNameMechanicValidation;
+    private javax.swing.JLabel logoItalika;
     public javax.swing.JButton logoutLayoutButton;
     public javax.swing.JComboBox<String> mechanicCBox;
     public javax.swing.JLabel mechanicWorkValidation;

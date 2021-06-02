@@ -103,11 +103,10 @@ public class DashboardController implements ActionListener, Runnable {
     
     public void startDashboard() {
         dashboardLayout.setTitle("ITALIKA CESIT DashboardManagement");
-        dashboardLayout.setLocationRelativeTo(null);
         dashboardLayout.setVisible(true);
         dashboardLayout.setSize(1080,720);
         dashboardLayout.setLocationRelativeTo(null);
-        dashboardLayout.setResizable(false);
+        dashboardLayout.setResizable(true);
         dashboardLayout.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         barChart = ChartFactory.createBarChart(
