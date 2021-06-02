@@ -300,6 +300,13 @@ public class WorkDialog extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Este metodo segun la fila seleccionada de la tabla de trabajos/servicios
+     * en el formulario de trabajos, se filtra el servicio seleccionado y los
+     * atributos de esa fila se mandan a los campos disponibles del formulario.
+     *
+     * @param evt
+     */
     private void tableWorkDialogMouseClicked(java.awt.event.MouseEvent evt) {
 
         int row = tableWorkDialog.getSelectedRow();
@@ -318,6 +325,14 @@ public class WorkDialog extends javax.swing.JDialog {
         issuesWorkDialogTArea.setText(selectedWork.getIssues());
     }
 
+    /**
+     * Este metodo retorna el indice seleccionado en el comboBox,
+     * se compara el folio seleccionado con el folio del combobox.
+     *
+     * @param folio
+     * @param comboBox
+     * @return
+     */
     private int selectedIndex(Long folio, JComboBox<String> comboBox) {
 
         int selectedIndex = 0;
@@ -332,6 +347,13 @@ public class WorkDialog extends javax.swing.JDialog {
         return selectedIndex;
     }
 
+    /**
+     * Este metodo retorna el indice seleccionado en el comboBox,
+     * se compara el folio seleccionado con el folio del combobox.
+     *
+     * @param plaque
+     * @return
+     */
     private int selectedIndex(String plaque) {
 
         int selectedIndex = 0;

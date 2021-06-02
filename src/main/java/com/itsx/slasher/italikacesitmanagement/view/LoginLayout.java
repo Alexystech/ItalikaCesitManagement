@@ -55,7 +55,7 @@ public class LoginLayout extends javax.swing.JFrame {
 
         loginButton.setText("Iniciar sesion");
 
-        logoCesit.setIcon(new javax.swing.ImageIcon("C:\\Users\\defin\\OneDrive\\Imágenes\\CESIT (1).png")); // NOI18N
+        logoCesit.setIcon(new javax.swing.ImageIcon("C:\\Users\\defin\\OneDrive\\documentos\\NetBeansProjects\\ItalikaCesitManagement\\src\\main\\java\\img\\CESIT (1).png")); // NOI18N
         logoCesit.setText("jLabel3");
 
         javax.swing.GroupLayout loginFormPanelLayout = new javax.swing.GroupLayout(loginFormPanel);
@@ -65,7 +65,10 @@ public class LoginLayout extends javax.swing.JFrame {
             .addGroup(loginFormPanelLayout.createSequentialGroup()
                 .addGroup(loginFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(loginFormPanelLayout.createSequentialGroup()
-                        .addGap(80, 80, 80)
+                        .addGap(53, 53, 53)
+                        .addComponent(logoCesit, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(loginFormPanelLayout.createSequentialGroup()
+                        .addGap(75, 75, 75)
                         .addGroup(loginFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(formLoginValidation)
                             .addComponent(passwordLoginValidation)
@@ -74,18 +77,15 @@ public class LoginLayout extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(loginField)
                             .addComponent(passwordLoginField)
-                            .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)))
-                    .addGroup(loginFormPanelLayout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(logoCesit, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
         loginFormPanelLayout.setVerticalGroup(
             loginFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginFormPanelLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addComponent(logoCesit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(logoCesit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loginField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -101,7 +101,7 @@ public class LoginLayout extends javax.swing.JFrame {
                 .addComponent(formLoginValidation)
                 .addGap(18, 18, 18)
                 .addComponent(loginButton)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addGap(81, 81, 81))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

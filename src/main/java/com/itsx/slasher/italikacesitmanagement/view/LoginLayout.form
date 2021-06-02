@@ -49,7 +49,11 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                          <Component id="logoCesit" min="-2" pref="220" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="formLoginValidation" min="-2" max="-2" attributes="0"/>
                               <Component id="passwordLoginValidation" min="-2" max="-2" attributes="0"/>
@@ -58,12 +62,8 @@
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <Component id="loginField" max="32767" attributes="0"/>
                               <Component id="passwordLoginField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="loginButton" alignment="0" pref="170" max="32767" attributes="0"/>
+                              <Component id="loginButton" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
                           </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                          <Component id="logoCesit" min="-2" pref="220" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="52" max="32767" attributes="0"/>
@@ -74,8 +74,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                  <Component id="logoCesit" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="logoCesit" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="loginField" min="-2" max="-2" attributes="0"/>
@@ -91,7 +91,7 @@
                   <Component id="formLoginValidation" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="loginButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="92" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

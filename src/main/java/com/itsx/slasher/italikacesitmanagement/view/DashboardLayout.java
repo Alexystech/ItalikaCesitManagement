@@ -148,7 +148,7 @@ public class DashboardLayout extends javax.swing.JFrame {
 
         serviceManagerLayoutButton.setText("Servicios");
 
-        logoItalika.setIcon(new javax.swing.ImageIcon("C:\\Users\\defin\\OneDrive\\Imágenes\\italika (1).png")); // NOI18N
+        logoItalika.setIcon(new javax.swing.ImageIcon("C:\\Users\\defin\\OneDrive\\documentos\\NetBeansProjects\\ItalikaCesitManagement\\src\\main\\java\\img\\italika (1).png")); // NOI18N
 
         javax.swing.GroupLayout navbarDashboardLayout = new javax.swing.GroupLayout(navbarDashboard);
         navbarDashboard.setLayout(navbarDashboardLayout);

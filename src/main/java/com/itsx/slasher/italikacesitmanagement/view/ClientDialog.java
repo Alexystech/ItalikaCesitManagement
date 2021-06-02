@@ -6,7 +6,6 @@
 package com.itsx.slasher.italikacesitmanagement.view;
 
 import com.itsx.slasher.italikacesitmanagement.model.Client;
-import com.itsx.slasher.italikacesitmanagement.model.Vehicle;
 import com.itsx.slasher.italikacesitmanagement.service.ClientService;
 
 import java.awt.*;

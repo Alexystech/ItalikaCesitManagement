@@ -8,7 +8,6 @@ package com.itsx.slasher.italikacesitmanagement.view;
 import com.itsx.slasher.italikacesitmanagement.model.TypeOfWork;
 import com.itsx.slasher.italikacesitmanagement.service.TypeOfWorkService;
 
-import javax.swing.*;
 import java.awt.*;
 
 /**
