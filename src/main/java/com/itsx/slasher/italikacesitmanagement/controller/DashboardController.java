@@ -40,6 +40,7 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -71,7 +72,9 @@ public class DashboardController implements ActionListener, Runnable {
     private WorkService workService;
 
     private JFreeChart barChart;
+    private JFreeChart pieChartMechanic;
     private ChartPanel panelBarChart;
+    private ChartPanel panelPieChartMechanic;
     
     public DashboardController(DashboardLayout dashboardLayout, ClientService clientService
             , MechanicService mechanicService, TypeOfWorkService typeOfWorkService
@@ -116,13 +119,28 @@ public class DashboardController implements ActionListener, Runnable {
                 false
         );
 
+        pieChartMechanic = ChartFactory.createPieChart(
+                "Cantidad de trabajos por mecanico",
+                null,
+                true,
+                true,
+                false
+        );
+
         panelBarChart = new ChartPanel(barChart);
+        panelPieChartMechanic = new ChartPanel(pieChartMechanic);
 
         panelBarChart.setMouseWheelEnabled(true);
-        panelBarChart.setPreferredSize(new Dimension(356,500));
+        panelBarChart.setPreferredSize(new Dimension(556,500));
+
+        panelPieChartMechanic.setMouseWheelEnabled(true);
+        panelPieChartMechanic.setPreferredSize(new Dimension(400,250));
 
         this.dashboardLayout.barChart.setLayout(new BorderLayout());
         this.dashboardLayout.barChart.add(panelBarChart, BorderLayout.NORTH);
+
+        this.dashboardLayout.paiChart1.setLayout(new BorderLayout());
+        this.dashboardLayout.paiChart1.add(panelPieChartMechanic, BorderLayout.NORTH);
 
         refreshList();
     }
@@ -356,6 +374,9 @@ public class DashboardController implements ActionListener, Runnable {
 
         while (this.dashboardLayout.isVisible()) {
 
+            /**
+             * data barchart
+             */
             List<Work> works = this.workService.getAllWorks();
             List<String> models = this.vehicleService.getAllVehicles().stream()
                     .map(item -> item.getModel())
@@ -366,6 +387,20 @@ public class DashboardController implements ActionListener, Runnable {
 
             dataBarchart.forEach( (key, data) -> {
                 dataset.addValue(data, "Servicios", key);
+            });
+
+            /**
+             * data pie chart mechanic
+             */
+            List<Long> folioMechanics = this.mechanicService.getAllMechanics().stream()
+                    .map(Mechanic::getFolio)
+                    .collect(Collectors.toList());
+
+            Map<String, Integer> dataPieChartMechanic = dataPieChartMechanic(folioMechanics, works);
+            DefaultPieDataset pieDatasetMechanic = new DefaultPieDataset();
+
+            dataPieChartMechanic.forEach( (key, data) -> {
+                pieDatasetMechanic.setValue(key, data);
             });
 
             barChart = ChartFactory.createBarChart(
@@ -382,6 +417,17 @@ public class DashboardController implements ActionListener, Runnable {
             panelBarChart.setChart(barChart);
             this.dashboardLayout.barChart.add(panelBarChart, BorderLayout.NORTH);
 
+            pieChartMechanic = ChartFactory.createPieChart(
+                    "Cantidad de trabajos por mecanico",
+                    pieDatasetMechanic,
+                    true,
+                    true,
+                    false
+            );
+
+            panelPieChartMechanic.setChart(pieChartMechanic);
+            this.dashboardLayout.paiChart1.repaint();
+
             try {
                 Thread.sleep(5000);
             } catch (InterruptedException e) {
@@ -397,9 +443,28 @@ public class DashboardController implements ActionListener, Runnable {
 
         for ( String model : modelVehicles ) {
 
-            data.put(model, works.stream()
-                    .filter( work -> work.getVehicle().getModel().equals(model) )
-                    .collect(Collectors.toList()).size()
+            data.put(model, (int) works.stream()
+                    .filter(work -> work.getVehicle().getModel().equals(model))
+                    .count()
+            );
+
+        }
+
+        return data;
+    }
+
+    private Map<String, Integer> dataPieChartMechanic(List<Long> folioMechanics, List<Work> works) {
+
+        Map<String, Integer> data = new HashMap<>();
+
+        for ( Long folio : folioMechanics ) {
+
+            Mechanic mechanic = mechanicService.getMechanicByFolio(folio);
+            String nameMechanic = "F" + folio + " - " + mechanic.getName() + " " + mechanic.getLastName();
+
+            data.put(nameMechanic, (int) works.stream()
+                    .filter(work -> work.getMechanic().getFolio().equals(folio))
+                    .count()
             );
 
         }

@@ -183,9 +183,9 @@
                           <Component id="barChart" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="payChart1" max="32767" attributes="0"/>
+                              <Component id="paiChart1" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="payChart2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="paiChart2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -200,9 +200,9 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="barChart" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="payChart1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="paiChart1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="payChart2" max="32767" attributes="0"/>
+                                  <Component id="paiChart2" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -229,7 +229,7 @@
                     </DimensionLayout>
                   </Layout>
                 </Container>
-                <Container class="javax.swing.JPanel" name="payChart1">
+                <Container class="javax.swing.JPanel" name="paiChart1">
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -247,7 +247,7 @@
                     </DimensionLayout>
                   </Layout>
                 </Container>
-                <Container class="javax.swing.JPanel" name="payChart2">
+                <Container class="javax.swing.JPanel" name="paiChart2">
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
