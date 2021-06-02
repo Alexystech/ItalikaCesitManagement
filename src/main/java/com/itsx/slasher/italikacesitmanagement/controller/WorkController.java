@@ -47,10 +47,10 @@ public class WorkController implements ActionListener {
     }
 
     public void start() {
-        workDialog.setVisible(true);
         runValidations();
         refreshList();
         refreshTable();
+        workDialog.setVisible(true);
     }
 
     public void runValidations() {

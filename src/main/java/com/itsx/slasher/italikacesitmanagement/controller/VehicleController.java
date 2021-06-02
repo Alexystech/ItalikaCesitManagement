@@ -30,9 +30,9 @@ public class VehicleController implements ActionListener {
     }
 
     public void start() {
-        vehicleDialog.setVisible(true);
         runValidations();
         refreshTable();
+        vehicleDialog.setVisible(true);
     }
 
     public void runValidations() {

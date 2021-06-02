@@ -8,18 +8,21 @@ package com.itsx.slasher.italikacesitmanagement.view;
 import com.itsx.slasher.italikacesitmanagement.model.Mechanic;
 import com.itsx.slasher.italikacesitmanagement.service.MechanicService;
 
+import java.awt.*;
+
 /**
  *
  * @author defin
  */
-public class MechanicDialog extends javax.swing.JFrame {
+public class MechanicDialog extends javax.swing.JDialog {
 
     private MechanicService mechanicService;
 
     /**
      * Creates new form MechanicDialog
      */
-    public MechanicDialog(MechanicService mechanicService) {
+    public MechanicDialog(MechanicService mechanicService, Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         setTitle("Mecanico");
         setResizable(true);

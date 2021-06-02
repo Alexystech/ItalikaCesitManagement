@@ -32,9 +32,9 @@ public class MechanicController implements ActionListener {
     }
 
     public void start() {
-        mechanicDialog.setVisible(true);
         runValidations();
         refreshTable();
+        mechanicDialog.setVisible(true);
     }
 
     public void runValidations() {

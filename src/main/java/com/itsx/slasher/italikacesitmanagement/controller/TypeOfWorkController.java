@@ -30,9 +30,9 @@ public class TypeOfWorkController implements ActionListener {
     }
 
     public void start() {
-        typeOfWorksDialog.setVisible(true);
         runValidations();
         refreshTable();
+        typeOfWorksDialog.setVisible(true);
     }
 
     public void runValidations() {

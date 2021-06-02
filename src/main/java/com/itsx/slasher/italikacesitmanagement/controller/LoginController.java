@@ -99,8 +99,12 @@ public class LoginController implements ActionListener {
                         typeOfWorkService, vehicleService, workService
                 );
                 
-                dashboardController.start();
+                dashboardController.startDashboard();
                 dashboardController.runValidations();
+
+                Thread threadGraph = new Thread(dashboardController);
+
+                threadGraph.start();
                 
             }
             

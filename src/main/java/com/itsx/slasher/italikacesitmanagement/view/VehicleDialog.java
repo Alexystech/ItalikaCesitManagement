@@ -8,18 +8,21 @@ package com.itsx.slasher.italikacesitmanagement.view;
 import com.itsx.slasher.italikacesitmanagement.model.Vehicle;
 import com.itsx.slasher.italikacesitmanagement.service.VehicleService;
 
+import java.awt.*;
+
 /**
  *
  * @author defin
  */
-public class VehicleDialog extends javax.swing.JFrame {
+public class VehicleDialog extends javax.swing.JDialog {
 
     private VehicleService vehicleService;
 
     /**
      * Creates new form VehicleDialog
      */
-    public VehicleDialog(VehicleService vehicleService) {
+    public VehicleDialog(VehicleService vehicleService, Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         setTitle("Vehiculo");
         setResizable(true);

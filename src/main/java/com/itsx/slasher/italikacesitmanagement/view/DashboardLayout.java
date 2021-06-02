@@ -37,6 +37,9 @@ public class DashboardLayout extends javax.swing.JFrame {
         tabbedDashboard = new javax.swing.JPanel();
         paneDashboard = new javax.swing.JTabbedPane();
         graphSpace = new javax.swing.JPanel();
+        barChart = new javax.swing.JPanel();
+        payChart1 = new javax.swing.JPanel();
+        payChart2 = new javax.swing.JPanel();
         formWork = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         folioServiceField = new javax.swing.JTextField();
@@ -180,15 +183,65 @@ public class DashboardLayout extends javax.swing.JFrame {
         paneDashboard.setToolTipText("");
         paneDashboard.setName(""); // NOI18N
 
+        javax.swing.GroupLayout barChartLayout = new javax.swing.GroupLayout(barChart);
+        barChart.setLayout(barChartLayout);
+        barChartLayout.setHorizontalGroup(
+            barChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 356, Short.MAX_VALUE)
+        );
+        barChartLayout.setVerticalGroup(
+            barChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout payChart1Layout = new javax.swing.GroupLayout(payChart1);
+        payChart1.setLayout(payChart1Layout);
+        payChart1Layout.setHorizontalGroup(
+            payChart1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        payChart1Layout.setVerticalGroup(
+            payChart1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 241, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout payChart2Layout = new javax.swing.GroupLayout(payChart2);
+        payChart2.setLayout(payChart2Layout);
+        payChart2Layout.setHorizontalGroup(
+            payChart2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 314, Short.MAX_VALUE)
+        );
+        payChart2Layout.setVerticalGroup(
+            payChart2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 244, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout graphSpaceLayout = new javax.swing.GroupLayout(graphSpace);
         graphSpace.setLayout(graphSpaceLayout);
         graphSpaceLayout.setHorizontalGroup(
             graphSpaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 710, Short.MAX_VALUE)
+            .addGroup(graphSpaceLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(barChart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(graphSpaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(payChart1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(graphSpaceLayout.createSequentialGroup()
+                        .addComponent(payChart2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 10, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         graphSpaceLayout.setVerticalGroup(
             graphSpaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 518, Short.MAX_VALUE)
+            .addGroup(graphSpaceLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(graphSpaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(barChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(graphSpaceLayout.createSequentialGroup()
+                        .addComponent(payChart1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(payChart2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         paneDashboard.addTab("Administracion", graphSpace);
@@ -756,6 +809,7 @@ public class DashboardLayout extends javax.swing.JFrame {
     public javax.swing.JButton agregarServicioButton;
     public javax.swing.JButton agregarTipoDeTrabajoButton;
     public javax.swing.JButton agregarVehiculoButton;
+    public javax.swing.JPanel barChart;
     public javax.swing.JTextField brandVehicleField;
     public javax.swing.JLabel brandVehicleValidation;
     public javax.swing.JTextField cellphoneClientField;
@@ -834,6 +888,8 @@ public class DashboardLayout extends javax.swing.JFrame {
     public javax.swing.JLabel nameTWorkValidation;
     private javax.swing.JPanel navbarDashboard;
     private javax.swing.JTabbedPane paneDashboard;
+    public javax.swing.JPanel payChart1;
+    public javax.swing.JPanel payChart2;
     public javax.swing.JTextField plaqueVehicleField;
     public javax.swing.JLabel plaqueVehicleValidation;
     public javax.swing.JTextField priceServiceField;

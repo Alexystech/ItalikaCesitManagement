@@ -9,19 +9,21 @@ import com.itsx.slasher.italikacesitmanagement.model.Work;
 import com.itsx.slasher.italikacesitmanagement.service.WorkService;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  *
  * @author defin
  */
-public class WorkDialog extends javax.swing.JFrame {
+public class WorkDialog extends javax.swing.JDialog {
 
     private WorkService workService;
 
     /**
      * Creates new form WorkDialog
      */
-    public WorkDialog(WorkService workService) {
+    public WorkDialog(WorkService workService, Frame parent, boolean modal) {
+        super(parent,modal);
         initComponents();
         setTitle("Servicios/trabajos");
         setResizable(true);

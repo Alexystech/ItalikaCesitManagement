@@ -9,19 +9,21 @@ import com.itsx.slasher.italikacesitmanagement.model.TypeOfWork;
 import com.itsx.slasher.italikacesitmanagement.service.TypeOfWorkService;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  *
  * @author defin
  */
-public class TypeOfWorksDialog extends javax.swing.JFrame {
+public class TypeOfWorksDialog extends javax.swing.JDialog {
 
     private TypeOfWorkService typeOfWorkService;
 
     /**
      * Creates new form TypeOfWorksDialog
      */
-    public TypeOfWorksDialog(TypeOfWorkService typeOfWorkService) {
+    public TypeOfWorksDialog(TypeOfWorkService typeOfWorkService, Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         setTitle("Tipo de trabajo");
         setResizable(true);

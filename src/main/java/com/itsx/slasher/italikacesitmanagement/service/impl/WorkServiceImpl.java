@@ -109,7 +109,7 @@ public class WorkServiceImpl implements WorkService {
         }
 
         final String URL_UPDATE_WORK =
-                "https://italika-apirest.herokuapp.com/api/work/";
+                "https://italika-apirest.herokuapp.com/api/work/update/work";
 
         try {
 

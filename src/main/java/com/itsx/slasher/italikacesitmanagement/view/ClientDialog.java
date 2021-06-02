@@ -9,18 +9,21 @@ import com.itsx.slasher.italikacesitmanagement.model.Client;
 import com.itsx.slasher.italikacesitmanagement.model.Vehicle;
 import com.itsx.slasher.italikacesitmanagement.service.ClientService;
 
+import java.awt.*;
+
 /**
  *
  * @author defin
  */
-public class ClientDialog extends javax.swing.JFrame {
+public class ClientDialog extends javax.swing.JDialog {
 
     private ClientService clientService;
 
     /**
      * Creates new form ClientDialog
      */
-    public ClientDialog(ClientService clientService) {
+    public ClientDialog(ClientService clientService, Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         setTitle("Cliente");
         setResizable(true);

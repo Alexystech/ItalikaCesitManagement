@@ -30,9 +30,9 @@ public class ClientController implements ActionListener {
     }
 
     public void start() {
-        this.clientDialog.setVisible(true);
         runValidations();
         refreshTable();
+        this.clientDialog.setVisible(true);
     }
 
     public void runValidations() {
@@ -112,6 +112,9 @@ public class ClientController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        /**
+         * update client dialog button
+         */
         if ( e.getSource() == clientDialog.updateClientDialogButton ) {
 
             ClientValidations clientValidations = new ClientValidationsImpl();

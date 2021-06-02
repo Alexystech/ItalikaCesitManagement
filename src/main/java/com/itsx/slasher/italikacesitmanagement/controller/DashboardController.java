@@ -35,20 +35,33 @@ import com.itsx.slasher.italikacesitmanagement.view.MechanicDialog;
 import com.itsx.slasher.italikacesitmanagement.view.TypeOfWorksDialog;
 import com.itsx.slasher.italikacesitmanagement.view.VehicleDialog;
 import com.itsx.slasher.italikacesitmanagement.view.WorkDialog;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import javax.swing.*;
 
 /**
  *
  * @author defin
  */
-public class DashboardController implements ActionListener {
+public class DashboardController implements ActionListener, Runnable {
     
     private DashboardLayout dashboardLayout;
     private ClientService clientService;
@@ -56,6 +69,9 @@ public class DashboardController implements ActionListener {
     private TypeOfWorkService typeOfWorkService;
     private VehicleService vehicleService;
     private WorkService workService;
+
+    private JFreeChart barChart;
+    private ChartPanel panelBarChart;
     
     public DashboardController(DashboardLayout dashboardLayout, ClientService clientService
             , MechanicService mechanicService, TypeOfWorkService typeOfWorkService
@@ -80,7 +96,7 @@ public class DashboardController implements ActionListener {
         this.dashboardLayout.logoutLayoutButton.addActionListener(this);
     }
     
-    public void start() {
+    public void startDashboard() {
         dashboardLayout.setTitle("ITALIKA CESIT DashboardManagement");
         dashboardLayout.setLocationRelativeTo(null);
         dashboardLayout.setVisible(true);
@@ -88,6 +104,25 @@ public class DashboardController implements ActionListener {
         dashboardLayout.setLocationRelativeTo(null);
         dashboardLayout.setResizable(false);
         dashboardLayout.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        barChart = ChartFactory.createBarChart(
+                "Cantidad de servicios por modelo",
+                "Modelos",
+                "Servicios",
+                null,
+                PlotOrientation.HORIZONTAL,
+                true,
+                true,
+                false
+        );
+
+        panelBarChart = new ChartPanel(barChart);
+
+        panelBarChart.setMouseWheelEnabled(true);
+        panelBarChart.setPreferredSize(new Dimension(356,500));
+
+        this.dashboardLayout.barChart.setLayout(new BorderLayout());
+        this.dashboardLayout.barChart.add(panelBarChart, BorderLayout.NORTH);
 
         refreshList();
     }
@@ -317,6 +352,62 @@ public class DashboardController implements ActionListener {
     }
 
     @Override
+    public void run() {
+
+        while (this.dashboardLayout.isVisible()) {
+
+            List<Work> works = this.workService.getAllWorks();
+            List<String> models = this.vehicleService.getAllVehicles().stream()
+                    .map(item -> item.getModel())
+                    .collect(Collectors.toList());
+
+            Map<String, Integer> dataBarchart = dataBarchart(models, works);
+            DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+            dataBarchart.forEach( (key, data) -> {
+                dataset.addValue(data, "Servicios", key);
+            });
+
+            barChart = ChartFactory.createBarChart(
+                    "Cantidad de servicios por modelo",
+                    "Modelos",
+                    "Servicios",
+                    dataset,
+                    PlotOrientation.HORIZONTAL,
+                    true,
+                    true,
+                    false
+            );
+
+            panelBarChart.setChart(barChart);
+            this.dashboardLayout.barChart.add(panelBarChart, BorderLayout.NORTH);
+
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    private Map<String, Integer> dataBarchart(List<String> modelVehicles, List<Work> works) {
+
+        Map<String, Integer> data = new HashMap<>();
+
+        for ( String model : modelVehicles ) {
+
+            data.put(model, works.stream()
+                    .filter( work -> work.getVehicle().getModel().equals(model) )
+                    .collect(Collectors.toList()).size()
+            );
+
+        }
+
+        return data;
+    }
+
+    @Override
     public void actionPerformed(ActionEvent arg0) {
 
         /**
@@ -340,7 +431,7 @@ public class DashboardController implements ActionListener {
          */
         if ( arg0.getSource() == dashboardLayout.typeWorkDialogButton ) {
 
-            TypeOfWorksDialog typeOfWorksDialog = new TypeOfWorksDialog(typeOfWorkService);
+            TypeOfWorksDialog typeOfWorksDialog = new TypeOfWorksDialog(typeOfWorkService, dashboardLayout, true);
             TypeOfWorkController typeOfWorkController = new TypeOfWorkController(typeOfWorksDialog, typeOfWorkService, workService);
 
             typeOfWorkController.start();
@@ -351,7 +442,7 @@ public class DashboardController implements ActionListener {
          */
         if ( arg0.getSource() == dashboardLayout.vehiclesLayoutButton ) {
 
-            VehicleDialog vehicleDialog = new VehicleDialog(vehicleService);
+            VehicleDialog vehicleDialog = new VehicleDialog(vehicleService, dashboardLayout, true);
             VehicleController vehicleController = new VehicleController(vehicleDialog, vehicleService, workService);
 
             vehicleController.start();
@@ -363,7 +454,7 @@ public class DashboardController implements ActionListener {
          */
         if ( arg0.getSource() == dashboardLayout.mechanicsLayoutButton ) {
 
-            MechanicDialog mechanicDialog = new MechanicDialog(mechanicService);
+            MechanicDialog mechanicDialog = new MechanicDialog(mechanicService, dashboardLayout, true);
             MechanicController mechanicController = new MechanicController(mechanicDialog, mechanicService, workService);
 
             mechanicController.start();
@@ -375,7 +466,7 @@ public class DashboardController implements ActionListener {
          */
         if ( arg0.getSource() == dashboardLayout.clientLayoutButton ) {
 
-            ClientDialog clientDialog = new ClientDialog(clientService);
+            ClientDialog clientDialog = new ClientDialog(clientService, dashboardLayout, true);
             ClientController clientController = new ClientController(clientDialog, clientService, workService);
 
             clientController.start();
@@ -387,7 +478,7 @@ public class DashboardController implements ActionListener {
          */
         if ( arg0.getSource() == dashboardLayout.serviceManagerLayoutButton ) {
 
-            WorkDialog workDialog = new WorkDialog(workService);
+            WorkDialog workDialog = new WorkDialog(workService, dashboardLayout, true);
             WorkController workController = new WorkController(workService, workDialog, typeOfWorkService
                     , vehicleService, mechanicService, clientService);
 
